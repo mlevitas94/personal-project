@@ -8,9 +8,8 @@ const Home = (props) =>{
         return(
             <div className='book'
                 key={i}>
-                {book.id}
                 <br/>
-                <Link to={`/books/${book.id}`}>Link to inidividual book</Link>
+                <Link to={`/books/${book.book_id}`}>Link to inidividual book</Link>
                 <br/>
                 {book.title}
                 <br/>

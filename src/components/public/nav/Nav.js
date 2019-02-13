@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 const Nav =(props) => {
     const dropDown = props.books.map((book, i) => {
         return (
-            <Link to={`/books/${book.id}`}>
+            <Link key={i} to={`/books/${book.book_id}`}>
                 <li>{book.title}</li>
             </Link>    
         )

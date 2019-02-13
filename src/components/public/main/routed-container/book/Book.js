@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 const Book = (props) => {
     const selectedBook = props.books.filter(book => {
-        return book.id == props.match.params.id
+        return book.book_id == props.match.params.id
     }).map(book => {return book})
     console.log(selectedBook)
 
