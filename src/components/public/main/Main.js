@@ -2,9 +2,9 @@ import React from 'react'
 import './Main.css'
 import routes from './routes'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
 
 const Main = (props) =>{
-    console.log(props)
     return (
         <div className='main-container'>
             <div className='header-container'>
@@ -23,4 +23,4 @@ const mapToProps = reduxState => {
     }
 }
 
-export default connect(mapToProps)(Main)
+export default withRouter(connect(mapToProps)(Main))

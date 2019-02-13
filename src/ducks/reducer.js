@@ -2,12 +2,12 @@ const initialState = {
     books:[
         {
         id:1,
-        title:'new title',
+        title:'yemen',
         price: 9.99
         },
         { 
          id:2,
-        title:'fun fun',
+        title:'Who is this clown',
         price:3.99}
     ]
 }

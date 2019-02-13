@@ -1,14 +1,23 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 
 const Home = (props) =>{
     const bookList = props.books.map((book,i) =>{
         return(
-            <div>
+            <div className='book'
+                key={i}>
                 {book.id}
+                <br/>
+                <Link to={`/books/${book.id}`}>Link to inidividual book</Link>
+                <br/>
                 {book.title}
+                <br/>
                 {book.price}
+                <br/>
+                
+
             </div>
         )
     })
