@@ -11,7 +11,7 @@ import Main from './components/public/main/Main'
 import './App.css';
 
 class App extends Component {
-  componentDidMount(){
+componentDidMount(){
     axios.get('/api/books')
     .then(res => {
       this.props.getBooks(res.data)

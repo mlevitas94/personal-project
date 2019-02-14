@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
 const Main = (props) =>{
+
     return (
         <div className='main-container'>
             <div className='header-container'>

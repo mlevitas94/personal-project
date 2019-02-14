@@ -1,23 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './book.css'
+import axios from 'axios'
+import {getBooks} from '../../../../../ducks/reducer'
 
-const Book = (props) => {
-    const selectedBook = props.books.filter(book => {
-        return book.book_id == props.match.params.id
-    }).map(book => {return book})
-    console.log(selectedBook)
+class Book extends Component {
+   componentDidMount(){
+        if(!this.props.books[0]){
+            axios.get('/api/books')
+                .then(res => {
+                    this.props.getBooks(res.data)
+                })
+        }
+        
+    }
+    render(){
+        const selectedBook = this.props.books.filter(book => {
+            return book.book_id == this.props.match.params.id
+        }).map(book => {return book})
 
+        // const selectedBook = [{id: 1, image:'image', title:'title', price:'price'}]
 
-    return (
-        <div>
-        {selectedBook[0].id}
-        <br/>
-        {selectedBook[0].title}
-        <br/>
-        {selectedBook[0].price}
-            
-        </div>
-    )
+        return (
+            <div className='book-box'>
+                <div>{selectedBook[0].id}</div>
+                <img src={`${selectedBook[0].image}`}/>
+                <div>{selectedBook[0].title}</div>
+                <div>{selectedBook[0].price}</div> 
+            </div>
+        )
+    }    
 }
 
 const mapToProps = reduxState => {
@@ -27,4 +39,4 @@ const mapToProps = reduxState => {
     }
 }
 
-export default connect(mapToProps)(Book)
+export default connect(mapToProps, {getBooks})(Book)
