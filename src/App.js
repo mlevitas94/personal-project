@@ -3,10 +3,13 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {getBooks} from './ducks/reducer'
 import {withRouter} from 'react-router-dom'
+import Admin from './components/admin/Admin'
 
 
 import Nav from './components/public/nav/Nav'
 import Main from './components/public/main/Main'
+
+import mainroutes from './Mainroutes'
 
 import './App.css';
 
@@ -19,10 +22,13 @@ componentDidMount(){
   }
   render() {
     return (
-      <div className='public-container'>
-       <Nav/>
-       <Main/>
-      </div>
+        <div>
+        {/* <Nav/>
+        <Main/>
+        </div>
+        <Admin/> */}
+        {mainroutes}
+      </div>  
     );
   }
 }
