@@ -33,9 +33,22 @@ module.exports = {
             const {session} = req
 
             let user = await db.admin.login(username)
-            console.log(user)
+            user = user[0]
+           
 
-            res.status(200).send('ayo, you logged in fam. do some admin work')
+            if(!user){
+                return res.status(401).send('username not exisitin')
+            }
+
+            const authedUser = bcrypt.compareSync(password, user.hash)
+            
+            if(authedUser){
+                delete user.password
+                res.status(200).send('logged in yo')
+            }else{
+                res.status(401).send('password wrong my dude')
+            }
+
         }catch(err){
             console.log(err)
         }
