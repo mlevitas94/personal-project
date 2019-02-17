@@ -1,11 +1,21 @@
-import React from 'react'
+import React, {Component} from 'react'
+import Bookhandles from './Bookhandles'
 
-const Logged = (props) => {
-    return (
-        <div>
-            this is the logged page yooooooo
-        </div>
-    )
+class Logged extends Component{
+    constructor(){
+        super()
+        this.state={
+
+        }
+    }
+
+    render(){
+        return(
+            <div>
+              <Bookhandles/>
+            </div>
+        )
+    }
 }
 
 export default Logged

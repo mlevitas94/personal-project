@@ -10,19 +10,21 @@ import mainroutes from './Mainroutes'
 import './App.css';
 
 class App extends Component {
-componentDidMount(){
-    axios.get('/api/books')
+async componentDidMount(){
+  try {axios.get('/api/books')
     .then(res => {
       this.props.getBooks(res.data)
     })
+    .catch(err => {
+      console.log('didnt get books fam', err)
+    })
+  }catch(err){
+    console.log(err, 'error pham')
   }
+}
   render() {
     return (
         <div>
-        {/* <Nav/>
-        <Main/>
-        </div>
-        <Admin/> */}
         {mainroutes}
       </div>  
     );

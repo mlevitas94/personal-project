@@ -1,0 +1,18 @@
+.handle-container{
+    text-align: center;
+}
+
+.handle-container button{
+    margin: 20px 0px;
+}
+
+.add-inputs{
+    height: 0px;
+    overflow: hidden;
+}
+
+.delete-list{
+   height: 0px;
+   overflow: hidden;
+
+}

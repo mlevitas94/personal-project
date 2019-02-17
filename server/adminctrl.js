@@ -43,8 +43,10 @@ module.exports = {
             const authedUser = bcrypt.compareSync(password, user.hash)
             
             if(authedUser){
-                delete user.password
-                res.status(200).send('logged in yo')
+                delete user.hash
+                session.user = user
+                res.status(200).send(session.user)
+
             }else{
                 res.status(401).send('password wrong my dude')
             }
@@ -55,5 +57,14 @@ module.exports = {
 
 
 
+    },
+    getUser: (req,res) => {
+        const {user} = req.session
+
+        if(user){
+            res.status(200).send(user)
+        }else{
+            res.sendStatus(401)
+        }
     }
 }
