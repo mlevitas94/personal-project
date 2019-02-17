@@ -16,3 +16,8 @@
    overflow: hidden;
 
 }
+
+.edit-field{
+    height:0px;
+    overflow: hidden;
+}
