@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import {connect} from 'react-redux'
 import {getBooks} from '../../../ducks/reducer'
+import Toedit from './Toedit'
 import './Logged.css'
 
 class Bookhandles extends Component{
@@ -31,82 +32,56 @@ class Bookhandles extends Component{
 
         axios.post('/api/books', toAdd)
         .then(res => {
-                console.log(res)
                 this.setState({
                     add: { title: '',purchaselink: '',imageurl:'',price: '',info:'', kprice: '',favsnip:''}
-                })
-            .catch(err => {
-                console.log(err)
-            })    
+                }) 
+                this.props.getBooks(res.data)  
+        })
+    }
+    deleteBook(id){
+        axios.delete(`/api/books/${id}`)
+        .then(res => {
+            this.props.getBooks(res.data)
+        }).catch(err => {
+            console.log(err)
         })
     }
 
-    deleteBook(id){
-        axios.delete(`/api/books:${id}`)
+    editBook(id, title, purchaselink, imageurl, price, info, kprice, favsnip){
+        const toEdit = {title, purchaselink, imageurl, price, info, kprice, favsnip}
+        axios.put(`/api/books/${id}`, toEdit)
         .then(res => {
-            console.log(res)
-        }).catch(err => {
+            this.props.getBooks(res.data)
+        })
+        .catch(err => {
             console.log(err)
         })
     }
 
 
     render(){
-        console.log(this.props.books)
         const toBeDeleted = this.props.books.map((book, i) => {
             return (
                 <div key={i}>
                     <span>{book.title}</span>
                     <br/>
-                    <button onClick={() => this.deleteBook(book.book.id)}>Delete</button>
+                    <button onClick={() => this.deleteBook(book.book_id)}>Delete</button>
                 </div>
             )
         })
 
         const toEdit = this.props.books.map((book, i) => {
+            const {title, link, image, price, info, kindle_price, fav_snip} = book
            return(
-            <div key={i}>
-                <span>{book.title}</span>
-                <br/> 
-                <button>Edit Book</button>
-
-                {/* fields pop up when clicked, hidden with overflow and height */}
-                <div className='edit-field'>
-                    <span>Title:</span>
-                        <br/>
-                        <input type='text' defaultValue={book.title}/>
-                        <br/>
-
-                        <span>Purchase Link:</span>
-                        <br/>
-                        <input type='url' defaultValue={book.link}/>
-                        <br/>
-
-                        <span>Image:</span>
-                        <br/>
-                        <input defaultValue={book.image}/>
-                        <br/>
-
-                        <span>Price:</span>
-                        <br/>
-                        <input type='text' defaultValue={book.price}/>
-                        <br/>
-
-                        <span>Info:</span>
-                        <br/>
-                        <input type='text' defaultValue={book.info}/>
-                        <br/>
-
-                        <span>Kindle Price:</span>
-                        <br/>
-                        <input type='text' defaultValue={book.kindle_price}/>
-                        <br/>
-
-                        <span>Favorite Snippet:</span>
-                        <br/>
-                        <input type='text' defaultValue={book.fav_snip}/>
-                </div>
-            </div>
+                <Toedit key ={i}
+                title={title}
+                link={link}
+                image={image}
+                price={price}
+                info={info}
+                kprice={kindle_price}
+                favsnip={fav_snip}
+                />
            )
 
         })

@@ -15,8 +15,9 @@ module.exports = {
                return res.status(401).send('make sure all fields are filled')
             }
             await db.books.add_book([title, purchaselink, imageurl, price, info, favsnip, kprice ])
+            const allBooks = await db.books.get_books()
 
-            return res.status(200).send(`the book, ${title}, has been added to the public page`)
+            return res.status(200).send(allBooks)
         }catch(err){
             console.log(err)
             return res.status(401).send('unable to add book')
@@ -24,6 +25,27 @@ module.exports = {
 
     },
     deleteBook: async (req, res) => {
+        try{
+            const db = req.app.get('db')
+            const {id} = req.params
         
+        await db.books.delete_book(id)
+        const allBooks = await db.books.get_books()
+
+
+        return res.status(200).send(allBooks)
+    }catch(err){
+        console.log(err)
+        return res.status(401).send('couldnt delete for some reason')
+    }
+
+    },
+    editBook: async (req, res) => {
+        const {title, purchaselink, imageurl, price, info, kprice, favsnip} = req.body
+        const {id} = req.params
+        const db = req.app.get('db')
+        console.log(id)
+
+
     }
 }

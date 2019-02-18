@@ -12,12 +12,12 @@
 }
 
 .delete-list{
-   /* height: 0px; */
+   height: 0px;
    overflow: hidden;
 
 }
 
 .edit-field{
-    height:0px;
+    /* height:0px; */
     overflow: hidden;
 }

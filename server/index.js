@@ -20,6 +20,8 @@ app.use(
 //books
 app.get('/api/books', bctrl.getBooks)
 app.post('/api/books', bctrl.addBook)
+app.delete('/api/books/:id', bctrl.deleteBook)
+app.put('/api/books/:id', bctrl.editBook)
 
 
 //admins
