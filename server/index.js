@@ -19,6 +19,7 @@ app.use(
 
 //books
 app.get('/api/books', bctrl.getBooks)
+app.post('/api/books', bctrl.addBook)
 
 
 //admins

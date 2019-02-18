@@ -9,7 +9,7 @@ class Bookhandles extends Component{
         super()
         this.state={
             add:{
-                title:'', purchaselink:'',imageurl:'',price:'', kprice:'', favsnip:''
+                title:'', purchaselink:'',imageurl:'',price:'', info:'', kprice:'', favsnip:''
             }
            
         }
@@ -25,15 +25,40 @@ class Bookhandles extends Component{
         })
     }
 
+    addBook(){
+        const {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state.add
+        const toAdd = {title, purchaselink, imageurl, price, info, kprice, favsnip}
+
+        axios.post('/api/books', toAdd)
+        .then(res => {
+                console.log(res)
+                this.setState({
+                    add: { title: '',purchaselink: '',imageurl:'',price: '',info:'', kprice: '',favsnip:''}
+                })
+            .catch(err => {
+                console.log(err)
+            })    
+        })
+    }
+
+    deleteBook(id){
+        axios.delete(`/api/books:${id}`)
+        .then(res => {
+            console.log(res)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
 
     render(){
-        console.log(this.state.edit)
+        console.log(this.props.books)
         const toBeDeleted = this.props.books.map((book, i) => {
             return (
                 <div key={i}>
                     <span>{book.title}</span>
                     <br/>
-                    <button>Delete</button>
+                    <button onClick={() => this.deleteBook(book.book.id)}>Delete</button>
                 </div>
             )
         })
@@ -65,6 +90,11 @@ class Bookhandles extends Component{
                         <span>Price:</span>
                         <br/>
                         <input type='text' defaultValue={book.price}/>
+                        <br/>
+
+                        <span>Info:</span>
+                        <br/>
+                        <input type='text' defaultValue={book.info}/>
                         <br/>
 
                         <span>Kindle Price:</span>
@@ -108,6 +138,11 @@ class Bookhandles extends Component{
                         <input type='text' value={this.state.add.price} onChange={(e) => this.updateAddInput( 'price',e.target.value)}/>
                         <br/>
 
+                        <span>Info:</span>
+                        <br/>
+                        <input type='text' value={this.state.add.info} onChange={(e) => this.updateAddInput( 'info',e.target.value)}/>
+                        <br/>
+
                         <span>Kindle Price:</span>
                         <br/>
                         <input type='text' value={this.state.add.kprice} onChange={(e) => this.updateAddInput( 'kprice',e.target.value)}/>
@@ -115,8 +150,10 @@ class Bookhandles extends Component{
 
                         <span>Favorite Snippet:</span>
                         <br/>
-                        <input type='text' value={this.state.add.favsnip} onChange={(e) => this.updateAddInput( 'favsnip',e.target.value)}/>
+                        <input type='text' value={this.state.add.favsnip} onChange={(e) => this.updateAddInput('favsnip',e.target.value)}/>
                         <br/>
+
+                        <button onClick={() => this.addBook()}>Add Book</button>
 
                     </div>
 
