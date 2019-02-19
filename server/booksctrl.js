@@ -44,8 +44,16 @@ module.exports = {
         const {title, purchaselink, imageurl, price, info, kprice, favsnip} = req.body
         const {id} = req.params
         const db = req.app.get('db')
-        console.log(id)
-
-
+        
+        if(!title || !purchaselink || !imageurl || !price || !info || !kprice || !favsnip ){
+            return res.status(401).send('make sure all fields are filled')
+        }
+        try{
+            await db.books.update_book([id, title, purchaselink, imageurl, price, info, favsnip, kprice])
+            const allBooks = await db.books.get_books()
+            res.status(200).send(allBooks)
+        }catch(err){
+            return console.log(err)
+        }
     }
 }

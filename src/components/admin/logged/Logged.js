@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Bookhandles from './Bookhandles'
+import Adminhandles from './Adminhandles'
 
 class Logged extends Component{
     constructor(){
@@ -13,6 +14,7 @@ class Logged extends Component{
         return(
             <div>
               <Bookhandles/>
+              <Adminhandles/>
             </div>
         )
     }

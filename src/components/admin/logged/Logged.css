@@ -17,7 +17,16 @@
 
 }
 
-.edit-field{
-    /* height:0px; */
+.edit-inputs{
+    height: 0px;
     overflow: hidden;
+}
+
+.edit-field{
+    height:0px;
+    overflow: hidden;
+}
+
+.admin-handle-container{
+    text-align: center;
 }

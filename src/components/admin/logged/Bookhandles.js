@@ -14,6 +14,7 @@ class Bookhandles extends Component{
             }
            
         }
+        this.editBook = this.editBook.bind(this)
     }
 
 
@@ -71,9 +72,10 @@ class Bookhandles extends Component{
         })
 
         const toEdit = this.props.books.map((book, i) => {
-            const {title, link, image, price, info, kindle_price, fav_snip} = book
+            const {book_id, title, link, image, price, info, kindle_price, fav_snip} = book
            return(
                 <Toedit key ={i}
+                id={book_id}
                 title={title}
                 link={link}
                 image={image}
@@ -81,6 +83,7 @@ class Bookhandles extends Component{
                 info={info}
                 kprice={kindle_price}
                 favsnip={fav_snip}
+                edit={this.editBook}
                 />
            )
 
