@@ -11,16 +11,13 @@ import './App.css';
 
 class App extends Component {
 async componentDidMount(){
-  try {axios.get('/api/books')
+   axios.get('/api/books')
     .then(res => {
       this.props.getBooks(res.data)
     })
     .catch(err => {
       console.log('didnt get books fam', err)
     })
-  }catch(err){
-    console.log(err, 'error pham')
-  }
 }
   render() {
     return (

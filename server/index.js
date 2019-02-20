@@ -28,6 +28,8 @@ app.put('/api/books/:id', bctrl.editBook)
 app.post('/admin/login', acrtl.login)
 app.post('/admin/register', acrtl.register)
 app.get('/admin/getuser', acrtl.getUser)
+app.get('/admin/getadmins', acrtl.getAdmins)
+app.delete('/admin/deleteadmin/:id', acrtl.deleteAdmin)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);

@@ -3,18 +3,16 @@ const bcrypt = require('bcryptjs')
 module.exports = {
     register: async (req,res) =>{
         try{
-            const {first_name, last_name, username, password} = req.body
+            const {firstname, lastname, username, password, add, remove, edit} = req.body
             const {session} = req
             const db = req.app.get('db')
 
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(password, salt)
 
-            let newUser = await db.admin.register([first_name, last_name, username, hash])
-            newUser = newUser[0].admin_id //returns the registered user's id
-            console.log(newUser)
+            let newUser = await db.admin.register([firstname, lastname, username, hash])
+            newUser = newUser[0].admin_id
 
-            const {add, remove, edit} = req.body.privileges // boolean values
             
             await db.admin.init_privileges([newUser, add, remove, edit])
 
@@ -34,6 +32,7 @@ module.exports = {
 
             let user = await db.admin.login(username)
             user = user[0]
+
            
 
             if(!user){
@@ -43,7 +42,9 @@ module.exports = {
             const authedUser = bcrypt.compareSync(password, user.hash)
             
             if(authedUser){
-                delete user.hash
+                delete user.hash;
+                delete user.privs_id;
+                delete user.user_id;
                 session.user = user
                 res.status(200).send(session.user)
 
@@ -66,5 +67,43 @@ module.exports = {
         }else{
             res.sendStatus(401)
         }
+    },
+
+    getAdmins: async (req,res) => {
+        const db = req.app.get('db')
+
+        const admins = await db.admin.get_admins()
+
+        const adminsFiltered = admins.map(admin => {
+            delete admin.hash;
+            delete admin.privs_id;
+            delete admin.user_id;
+            return admin
+        })
+
+        res.status(200).send(adminsFiltered)
+    },
+
+    deleteAdmin: async (req,res) => {
+        const {id} = req.params
+        const db = req.app.get('db')
+
+    
+        let admin = await db.admin.get_a_admin(id)
+        admin = admin[0]
+        if(!admin){
+            res.status(401).send('user doesnt exist')
+        }
+        await db.admin.delete_admin(id)
+
+        const admins = await db.admin.get_admins()
+        const adminsFiltered = admins.map(admin => {
+            delete admin.hash;
+            delete admin.privs_id;
+            delete admin.user_id;
+            return admin
+        })
+
+        res.status(200).send(adminsFiltered)
     }
 }

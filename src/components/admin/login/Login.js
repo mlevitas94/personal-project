@@ -27,6 +27,7 @@ class Login extends Component {
             .then(res => {
                 this.props.updateUser(res.data)
                 console.log('session got from back')
+                console.log(this.props.loggedUser)
                 this.props.history.push('/admin/config')
             })
             .catch(err => {
@@ -47,7 +48,6 @@ class Login extends Component {
         axios.post('/admin/login', {username, password})
         .then( res => {
             this.props.updateUser(res.data)
-            console.log(this.props.loggedUser)
             this.props.history.push('/admin/config')
 
         })
