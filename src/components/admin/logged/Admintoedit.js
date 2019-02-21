@@ -15,6 +15,7 @@ class Admintoedit extends Component{
         })
     }
     render(){
+        const {add, remove, edit} = this.state
         return(
             <div className='adminedit'>
                <span>{`${this.props.firstname} ${this.props.lastname}`}</span>
@@ -30,7 +31,7 @@ class Admintoedit extends Component{
                <span>Edit:</span>
                <input type='checkbox' checked={this.state.edit} onChange={() => this.updateAdminPrivs('edit')}/>
                <br/>
-               <button>Send Edit</button>
+               <button onClick={() => this.props.editfunc(this.props.id, add, remove, edit)}>Send Edit</button>
             </div>
         )
     }

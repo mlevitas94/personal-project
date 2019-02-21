@@ -30,6 +30,7 @@ app.post('/admin/register', acrtl.register)
 app.get('/admin/getuser', acrtl.getUser)
 app.get('/admin/getadmins', acrtl.getAdmins)
 app.delete('/admin/deleteadmin/:id', acrtl.deleteAdmin)
+app.put('/admin/editadmin/:id', acrtl.editAdmin)
 
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);

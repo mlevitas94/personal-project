@@ -18,6 +18,7 @@ class Adminhandles extends Component{
             remove: false,
             edit: false
         }
+        this.editAdminPrivs=this.editAdminPrivs.bind(this)
     }
 
     componentDidMount(){
@@ -64,6 +65,17 @@ class Adminhandles extends Component{
             console.log('passwords need to match')
         }
     }
+
+    editAdminPrivs(id,add,remove,edit){
+        const privEdits = {add, remove, edit}
+        axios.put(`/admin/editadmin/${id}`, privEdits)
+        .then(res => {
+            console.log('admin edited')
+        }).catch(err =>{
+            console.log('err')
+        })
+    }
+    
     render(){
         const deleteAdmin = this.props.admins.map((admin, i) => {
             return (
@@ -80,6 +92,8 @@ class Adminhandles extends Component{
         const editAdmin = this.props.admins.map((admin, i) => {
             return(
                 <Admintoedit key={i}
+                editfunc={this.editAdminPrivs}
+                id={admin.admin_id}
                 firstname={admin.first_name}
                 lastname={admin.last_name}
                 username={admin.username}

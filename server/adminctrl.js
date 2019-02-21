@@ -105,5 +105,33 @@ module.exports = {
         })
 
         res.status(200).send(adminsFiltered)
+    },
+    editAdmin: async (req,res) => {
+        const {add,remove,edit} = req.body
+        const {id} = req.params
+        const db = req.app.get('db')
+        console.log(add,remove,edit)
+        
+
+        let admin = await db.admin.get_a_admin(id)
+        admin = admin[0]
+
+        if(!admin){
+            return res.status(401).send('user not existing')
+        }
+
+        try{
+            await db.admin.edit_admin(admin.admin_id, add, remove, edit)
+        }catch(err){
+            return res.status(401).send('error')
+        }
+        let admins = await db.admin.get_admins()
+        admins = admins.map(admin => {
+            delete admin.hash;
+            delete admin.privs_id;
+            delete admin.user_id;
+            return admin
+        })
+        res.status(200).send(admins)
     }
 }
