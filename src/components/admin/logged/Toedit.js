@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-// import {getBooks} from '../../../ducks/reducer'
+import { v4 as randomString } from 'uuid';
+import axios from 'axios'
 import './Logged.css'
 
 class Toedit extends Component{
@@ -20,6 +21,87 @@ class Toedit extends Component{
         this.setState({
             [input]: val
         })
+    }
+    async editBook(id, title, purchaselink, price, info, kprice, favsnip){
+        // const imageInput = document.getElementById(`${input}`)
+        // const toEdit = {title, purchaselink, imageurl, price, info, kprice, favsnip}
+        // axios.put(`/api/books/${id}`, toEdit)
+        // .then(res => {
+        //     this.props.getBooks(res.data)
+        // })
+        // .catch(err => {
+        //     console.log(err)
+        // })
+
+        const getSignedRequest = async (file) => {
+            console.log(file)
+            const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
+    
+            axios.get('api/signs3' , {
+                params: {
+                    'file-name':fileName,
+                    'file-type':file.type
+                }
+            })
+            .then(res => {
+                const {signedRequest, url} = res.data;
+                uploadFile(file, signedRequest, url)
+    
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    
+        const uploadFile = async (file, signedRequest, url) => {
+            const options = {
+              headers: {
+                'Content-Type': file.type,
+              },
+            };
+        
+            axios
+              .put(signedRequest, file, options)
+              .then(res => {
+                let toEdit = {title, purchaselink, imageurl:url, price, info, kprice, favsnip}
+                axios.put(`/api/books/${id}`, toEdit)
+                .then(res => {
+                    // this.props.getBooks(res.data)
+                    console.log('edit happened')
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+              })
+              .catch(err => {
+                if (err.response.status === 403) {
+                  alert(
+                    `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
+                      err.stack
+                    }`
+                  );
+                } else {
+                  alert(`ERROR: ${err.status}\n ${err.stack}`);
+                }
+              });
+          };
+          const editFileInput = document.getElementById(`input-${this.props.id}`).files[0]
+          console.log(editFileInput)
+          if(!editFileInput){
+            let toEdit = {title, purchaselink, price, info, kprice, favsnip}
+            axios.put(`/api/books/${id}`, toEdit)
+            .then(res => {
+                // this.props.getBooks(res.data)
+                console.log('book updated w/o img')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+          }else{
+            getSignedRequest(editFileInput)
+
+          }
+
     }
 
     render(){
@@ -43,9 +125,11 @@ class Toedit extends Component{
                     <input type='url' defaultValue={this.props.link} onChange={(e) => this.updateEditInput('purchaselink', e.target.value)}/>
                     <br/>
 
-                    <span>Image:</span>
+                    <span>Current Image:</span>
                     <br/>
-                    <input defaultValue={this.props.image}onChange={(e) => this.updateEditInput('imageurl', e.target.value)}/>
+                    <img src={`${this.props.image}`}/>
+                    <br/>
+                    <input id={`input-${this.props.id}`} type='file' accept='image/*'/>
                     <br/>
 
                     <span>Price:</span>
@@ -67,7 +151,8 @@ class Toedit extends Component{
                     <br/>
                     <input type='text' defaultValue={this.props.favsnip} onChange={(e) => this.updateEditInput('favsnip', e.target.value)}/>
                     <br/>
-                    <button onClick={() => this.props.edit(id, title, purchaselink, imageurl, price, info, kprice, favsnip)}>Edit</button>
+                    <button onClick={() => {
+                        this.editBook(id, title, purchaselink, price, info, kprice, favsnip)}}>Edit</button>
                     
             </div>
         </div>
@@ -76,12 +161,6 @@ class Toedit extends Component{
     }
 }
 
-// const mapToProps = reduxState => {
-//     const {books} = reduxState
-//     return {
-//         books
-//     }
-// }
 export default  Toedit
-// connect(mapToProps, {getBooks})(Toedit)
+
 

@@ -15,7 +15,6 @@ class Bookhandles extends Component{
             }
            
         }
-        this.editBook = this.editBook.bind(this)
     }
 
 
@@ -28,72 +27,72 @@ class Bookhandles extends Component{
         })
     }
 
-
-    getSignedRequest = (file) => {
-        const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
-
-        axios.get('api/signs3' , {
-            params: {
-                'file-name':fileName,
-                'file-type':file.type
-            }
-        })
-        .then(res => {
-            const {signedRequest, url} = res.data;
-            this.uploadFile(file, signedRequest, url)
-
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-
-    uploadFile = (file, signedRequest, url) => {
-        const options = {
-          headers: {
-            'Content-Type': file.type,
-          },
-        };
+    async addBook(){
+        const getSignedRequest = async (file) => {
+            const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
     
-        axios
-          .put(signedRequest, file, options)
-          .then(res => {
-              console.log(url)
-              this.setState({
-                add: {
-                    ...this.state.add,
-                    imageurl:url
+            axios.get('api/signs3' , {
+                params: {
+                    'file-name':fileName,
+                    'file-type':file.type
                 }
             })
+            .then(res => {
+                const {signedRequest, url} = res.data;
+                uploadFile(file, signedRequest, url)
+    
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
+    
+        const uploadFile = async (file, signedRequest, url) => {
+            const options = {
+              headers: {
+                'Content-Type': file.type,
+              },
+            };
+        
+            axios
+              .put(signedRequest, file, options)
+              .then(res => {
+                  console.log(url)
+                  this.setState({
+                    add: {
+                        ...this.state.add,
+                        imageurl:url
+                    }
+                })
             const {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state.add
             const toAdd = {title, purchaselink, imageurl, price, info, kprice, favsnip}
-            axios.post('/api/books', toAdd)
-            .then(res => {
-                this.setState({
-                    add: { title: '',purchaselink: '',imageurl:'',price: '',info:'', kprice: '',favsnip:''}
-                }) 
-                this.props.getBooks(res.data)  
-            }).catch(err => {
-                console.log(err)
-            })  
-          })
-          .catch(err => {
-            if (err.response.status === 403) {
-              alert(
-                `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
-                  err.stack
-                }`
-              );
-            } else {
-              alert(`ERROR: ${err.status}\n ${err.stack}`);
-            }
-          });
-      };
-    
+            console.log(toAdd)
+                axios.post('/api/books', toAdd)
+                .then(res => {
+                    this.setState({
+                        add: { title: '',purchaselink: '',imageurl:'',price: '',info:'', kprice: '',favsnip:''}
+                    }) 
+                    this.props.getBooks(res.data)  
+                }).catch(err => {
+                    console.log(err)
+                })  
+              })
+              .catch(err => {
+                if (err.response.status === 403) {
+                  alert(
+                    `Your request for a signed URL failed with a status 403. Double check the CORS configuration and bucket policy in the README. You also will want to double check your AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY in your .env and ensure that they are the same as the ones that you created in the IAM dashboard. You may need to generate new keys\n${
+                      err.stack
+                    }`
+                  );
+                } else {
+                  alert(`ERROR: ${err.status}\n ${err.stack}`);
+                }
+              });
+          };
 
-    async addBook(){
+
         const imageInput = document.getElementById('imageInput').files[0]
-        try{await this.getSignedRequest(imageInput)}catch(err){console.log(err)}
+        getSignedRequest(imageInput)
     }
     deleteBook(id){
         axios.delete(`/api/books/${id}`)
@@ -104,21 +103,9 @@ class Bookhandles extends Component{
         })
     }
 
-    editBook(id, title, purchaselink, imageurl, price, info, kprice, favsnip){
-        const toEdit = {title, purchaselink, imageurl, price, info, kprice, favsnip}
-        axios.put(`/api/books/${id}`, toEdit)
-        .then(res => {
-            this.props.getBooks(res.data)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    }
-
-    
-
 
     render(){
+
         const toBeDeleted = this.props.books.map((book, i) => {
             return (
                 <div key={i}>
@@ -141,7 +128,6 @@ class Bookhandles extends Component{
                 info={info}
                 kprice={kindle_price}
                 favsnip={fav_snip}
-                edit={this.editBook}
                 />
            )
 

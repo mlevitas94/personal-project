@@ -7,7 +7,7 @@
 }
 
 .add-inputs{
-    /* height: 0px; */
+    height: 0px;
     overflow: hidden;
 }
 
@@ -18,12 +18,16 @@
 }
 
 .edit-inputs{
-    height: 0px;
+    /* height: 0px; */
     overflow: hidden;
 }
 
+.edit-inputs img{
+    width:100px;
+}
+
 .edit-field{
-    height:0px;
+    /* height:0px; */
     overflow: hidden;
 }
 
