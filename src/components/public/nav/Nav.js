@@ -1,34 +1,54 @@
 import React from 'react'
-import './Nav.css'
+import './Nav.scss'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 
 const Nav =(props) => {
     const dropDown = props.books.map((book, i) => {
         return (
-            <Link key={i} to={`/books/${book.book_id}`}>
+            <Link className='books' key={i} to={`/books/${book.book_id}`}>
                 <li>{book.title}</li>
             </Link>    
         )
     })
+
+    const drop = () => {
+        document.querySelector('.dropdown').classList.toggle('dropped')
+    }
+
     // const dropDown
     return(
         <div className='nav-container'>
-            <div className='logo-container'>
-                logo will be here
-            </div>
             <ul className='nav-list'>
-                <li><Link to='/'>Home</Link></li>
-                <li className='dropdown-container'>
-                    <span>Books</span>
-                    <div className='dropdown'>
-                         <ul>
-                            {dropDown}
-                         </ul>
-                    </div>
+                <li>
+                    <div className='link-container'>
+                        <Link  to='/'>Home</Link>
+                        <div className='line'></div>
+                    </div>    
                 </li>
-                <li><Link to='/about'>About</Link></li>
-                <li><Link to='/contact'>Contact</Link></li>
+                <li onClick={() => drop()} className='dropdown-container'>
+                    <div className='link-container' id='non-link'>
+                        <span>Books</span>
+                        <div className='line'></div>
+                    </div>    
+                        <div className='dropdown' id='dropdown'>
+                            <ul>
+                                {dropDown}
+                            </ul>
+                        </div>
+                </li>
+                <li>
+                    <div className='link-container'>
+                        <Link to='/about'>About</Link>
+                        <div className='line'></div>
+                    </div>    
+                </li>
+                <li>
+                    <div className='link-container'>
+                        <Link to='/contact'>Contact</Link>
+                        <div className='line'></div>
+                    </div>    
+                </li>
             </ul>
         </div>
     )

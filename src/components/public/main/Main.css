@@ -1,9 +1,4 @@
 .main-container{
     width: 85%;
-    background-color: peachpuff;
-}
-
-.header-container{
-    background-color: aqua;
-    text-align: center;
+    border:solid black 1px;
 }

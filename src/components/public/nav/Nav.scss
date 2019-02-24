@@ -1,0 +1,65 @@
+@import '../../../assets/variables';
+
+.nav-container{
+    width:15%;
+    border: solid black 1px;
+}
+
+.nav-list{
+    @include mainlinks;
+}
+
+.link-container{
+    .line{
+        width:0;
+        border-bottom: solid black 1px;
+        transition: width 0.5s;
+    }
+    &:hover{
+        .line{
+            width:100%;
+        }
+    }
+}
+
+.dropdown-container{
+    span{
+        margin-left:10px;
+    }
+    width: 100%;
+    #non-link{
+        cursor: pointer;
+    }
+
+}
+
+.dropdown{
+    max-height:0px;
+    overflow: scroll;
+    overflow-x: hidden;
+    transition: max-height 0.5s;
+    margin-left: 10px;
+
+
+}
+
+.books{
+    transition: color 0.2s;
+    &:hover{
+        color: #139ad4;
+    }
+}
+
+
+::-webkit-scrollbar{
+    width: 5px;
+}
+::-webkit-scrollbar-thumb{
+    background: #2b2525b3;
+    border-radius: 10px;
+}
+
+.dropped{
+    max-height: 100px;
+}
+

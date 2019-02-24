@@ -8,10 +8,7 @@ const Main = (props) =>{
 
     return (
         <div className='main-container'>
-            <div className='header-container'>
-                <h1>Header</h1>
-            </div>
-
+        
              {routes}
         </div>
     )
