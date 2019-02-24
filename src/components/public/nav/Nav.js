@@ -22,13 +22,13 @@ const Nav =(props) => {
             <ul className='nav-list'>
                 <li>
                     <div className='link-container'>
-                        <Link  to='/'>Home</Link>
+                        <span className='home'><Link  to='/'><i class="fas fa-home"></i>Home</Link></span>
                         <div className='line'></div>
                     </div>    
                 </li>
                 <li onClick={() => drop()} className='dropdown-container'>
                     <div className='link-container' id='non-link'>
-                        <span>Books</span>
+                    <span><i class="fas fa-book"></i> Books</span>
                         <div className='line'></div>
                     </div>    
                         <div className='dropdown' id='dropdown'>
@@ -39,13 +39,13 @@ const Nav =(props) => {
                 </li>
                 <li>
                     <div className='link-container'>
-                        <Link to='/about'>About</Link>
+                        <Link to='/about'><i class="fas fa-user"></i> About</Link>
                         <div className='line'></div>
                     </div>    
                 </li>
                 <li>
                     <div className='link-container'>
-                        <Link to='/contact'>Contact</Link>
+                        <Link to='/contact'><i class="fas fa-address-book"></i> Contact</Link>
                         <div className='line'></div>
                     </div>    
                 </li>
