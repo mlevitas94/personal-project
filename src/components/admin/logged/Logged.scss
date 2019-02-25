@@ -1,3 +1,5 @@
+@import '../../../assets/variables';
+
 .whole-admin-container{
     height: 100vh;
     overflow: scroll;
@@ -17,7 +19,8 @@
 }
 
 .handle-container button{
-    margin: 20px 0px;
+    @include button;
+    border:none;
 }
 
 

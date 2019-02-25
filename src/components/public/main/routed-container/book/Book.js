@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './book.scss'
-import axios from 'axios'
 import {getBooks} from '../../../../../ducks/reducer'
 
 class Book extends Component {
