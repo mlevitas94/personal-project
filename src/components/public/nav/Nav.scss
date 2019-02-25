@@ -7,7 +7,7 @@
 
 .nav-list{
     font:{
-        family: 'Open Sans';
+        family: $globalfont;
         size: 100%;
         
     }
@@ -75,7 +75,7 @@
 .books{
     transition: color 0.2s;
     &:hover{
-        color: #139ad4;
+        color: #ffffff66;
     }
 }
 

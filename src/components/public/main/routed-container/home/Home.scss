@@ -1,0 +1,53 @@
+@import '../../../../../assets/variables';
+
+.books-container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font:{
+        family: $globalfont;
+    }
+
+.book{
+    text-align: center;
+    background-color: hsla(186, 27%, 20%, 0.788);
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px #ffffff66;
+    height: auto;
+    img{
+        width:150px;
+        height:250px;
+        border-radius: 3px;
+        box-shadow: 2px 2px 5px #ffffff66;
+    }
+    a{
+        color:#ffffff66;
+        text-decoration: none;
+        background-color: black;
+        padding: 5px;
+        border-radius: 3px; 
+        transition: 0.3s;
+        font-weight: 700;
+        box-shadow: 2px 2px 5px 1px;
+        &:hover{
+            color: hsl(215, 36%, 91%);
+            box-shadow: none;
+        }
+    }
+
+}
+.halfed{
+    display: flex;
+    align-items: center;
+    margin:10px;
+}
+    .right{
+        width: 100%;
+        margin:20px;
+        span{
+            margin-top:20px;
+            font-weight: 700;
+        }
+    }
+}
