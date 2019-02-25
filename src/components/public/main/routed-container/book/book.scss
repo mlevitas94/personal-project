@@ -1,0 +1,41 @@
+@import '../../../../../assets/variables';
+.whole-container{
+    font-family: $globalfont;
+}
+
+h3{
+    width: 100%;
+    text-align: center;
+}
+.book-box{
+    background-color: chartreuse;
+    width: 70%;
+    margin: 25px auto 0px auto;
+    @include card;
+
+
+    .split{
+        display: flex;
+        align-items: center;
+        .left{
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            img{
+                width:70%;
+                margin: 0px auto;
+            }
+            p{
+                text-align: center;
+            }
+        }
+        .right{
+             width: 50%;
+        }
+    }
+    .snip{
+        text-align: center;
+        margin:20px;
+    }
+    
+}

@@ -11,8 +11,8 @@ import './App.css';
 
 class App extends Component {
 async componentDidMount(){
-   axios.get('/api/books')
-    .then(res => {
+  axios.get('/api/books')
+    .then((res) => { 
       this.props.getBooks(res.data)
     })
     .catch(err => {

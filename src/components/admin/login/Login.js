@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 import {updateUser} from '../../../ducks/reducer'
 
 
-import './Login.css'
+import './Login.scss'
 
 
 class Login extends Component {

@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import { v4 as randomString } from 'uuid';
 import axios from 'axios'
-import './Logged.css'
 
 class Toedit extends Component{
     constructor(props){
@@ -23,15 +22,6 @@ class Toedit extends Component{
         })
     }
     async editBook(id, title, purchaselink, price, info, kprice, favsnip){
-        // const imageInput = document.getElementById(`${input}`)
-        // const toEdit = {title, purchaselink, imageurl, price, info, kprice, favsnip}
-        // axios.put(`/api/books/${id}`, toEdit)
-        // .then(res => {
-        //     this.props.getBooks(res.data)
-        // })
-        // .catch(err => {
-        //     console.log(err)
-        // })
 
         const getSignedRequest = async (file) => {
             console.log(file)
@@ -66,7 +56,7 @@ class Toedit extends Component{
                 let toEdit = {title, purchaselink, imageurl:url, price, info, kprice, favsnip}
                 axios.put(`/api/books/${id}`, toEdit)
                 .then(res => {
-                    // this.props.getBooks(res.data)
+                    this.props.updateList(res.data)
                     console.log('edit happened')
                 })
                 .catch(err => {
@@ -91,7 +81,7 @@ class Toedit extends Component{
             let toEdit = {title, purchaselink, price, info, kprice, favsnip}
             axios.put(`/api/books/${id}`, toEdit)
             .then(res => {
-                // this.props.getBooks(res.data)
+                this.props.updateList(res.data)
                 console.log('book updated w/o img')
             })
             .catch(err => {

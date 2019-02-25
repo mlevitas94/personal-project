@@ -53,6 +53,8 @@ module.exports = {
 
         if(!imageurl){
             await db.books.update_book_noimg([id, title, purchaselink, price, info, favsnip, kprice])
+            const allBooks = await db.books.get_books()
+            return res.status(200).send(allBooks)
         }
         
         try{

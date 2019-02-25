@@ -4,7 +4,6 @@ import {connect} from 'react-redux'
 import {getBooks} from '../../../ducks/reducer'
 import { v4 as randomString } from 'uuid';
 import Toedit from './Toedit'
-import './Logged.css'
 
 class Bookhandles extends Component{
     constructor(){
@@ -15,6 +14,7 @@ class Bookhandles extends Component{
             }
            
         }
+        this.updateList = this.updateList.bind(this)
     }
 
 
@@ -25,6 +25,10 @@ class Bookhandles extends Component{
                 [input]:val
             }
         })
+    }
+
+    updateList(data){
+        this.props.getBooks(data)
     }
 
     async addBook(){
@@ -120,6 +124,7 @@ class Bookhandles extends Component{
             const {book_id, title, link, image, price, info, kindle_price, fav_snip} = book
            return(
                 <Toedit key ={i}
+                updateList={this.updateList}
                 id={book_id}
                 title={title}
                 link={link}
