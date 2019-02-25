@@ -2,14 +2,15 @@
 
 .nav-container{
     width:15%;
-    border: solid black 1px;
+    background-color: rgb(0, 0, 0);
+    color:white;
+    font-family: $globalfont;
+    border-bottom-right-radius: 200px;
 }
 
 .nav-list{
     font:{
-        family: $globalfont;
         size: 100%;
-        
     }
     li{
         position: relative;
@@ -20,7 +21,7 @@
     }
 
     a{
-        color: black;
+        color: white;
         text-decoration: none;
         width: calc(100%-10px);
         display: block;
@@ -33,7 +34,7 @@
 .link-container{
     .line{
         width:0;
-        border-bottom: solid black 1px;
+        border-bottom: solid white 1px;
         transition: width 0.5s;
     }
     &:hover{
@@ -84,11 +85,16 @@
     width: 5px;
 }
 ::-webkit-scrollbar-thumb{
-    background: #2b2525b3;
+    background: white;
     border-radius: 10px;
 }
 
 .dropped{
     max-height: 100px;
+}
+
+h1{
+    margin: 40px 0px;
+    text-align: center;
 }
 

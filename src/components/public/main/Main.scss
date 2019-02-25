@@ -1,5 +1,13 @@
 .main-container{
     width: 85%;
-    border:solid black 1px;
     overflow: scroll;
+    height: 102%;
+}
+
+.main-container::-webkit-scrollbar{
+    width: 5px;
+}
+.main-container::-webkit-scrollbar-thumb{
+    background: #4e4c4c;
+    border-radius: 10px;
 }

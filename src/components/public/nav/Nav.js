@@ -16,20 +16,26 @@ const Nav =(props) => {
         document.querySelector('.dropdown').classList.toggle('dropped')
     }
 
+
     // const dropDown
     return(
         <div className='nav-container'>
+        <div>
+            <h1>
+                Thom
+            </h1>
+        </div>
             <ul className='nav-list'>
                 <li>
-                    <div className='link-container'>
+                    <div className='link-container' >
                         <span className='home'><Link  to='/'><i class="fas fa-home"></i>Home</Link></span>
-                        <div className='line'></div>
+                        <div className='line' id='line-one'></div>
                     </div>    
                 </li>
                 <li onClick={() => drop()} className='dropdown-container'>
                     <div className='link-container' id='non-link'>
                     <span><i class="fas fa-book"></i> Books</span>
-                        <div className='line'></div>
+                        <div className='line' id='line-two'></div>
                     </div>    
                         <div className='dropdown' id='dropdown'>
                             <ul>
@@ -38,15 +44,15 @@ const Nav =(props) => {
                         </div>
                 </li>
                 <li>
-                    <div className='link-container'>
+                    <div className='link-container' >
                         <Link to='/about'><i class="fas fa-user"></i> About</Link>
-                        <div className='line'></div>
+                        <div className='line' id='line-three'></div>
                     </div>    
                 </li>
                 <li>
-                    <div className='link-container'>
+                    <div className='link-container' id='line-three'>
                         <Link to='/contact'><i class="fas fa-address-book"></i> Contact</Link>
-                        <div className='line'></div>
+                        <div className='line' id='line-four'></div>
                     </div>    
                 </li>
             </ul>
