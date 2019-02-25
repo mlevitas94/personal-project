@@ -13,7 +13,7 @@ class Book extends Component {
         // const selectedBook = [{id: 1, image:'image', title:'title', price:'price'}]
         if(selectedBook[0]){
         return (
-            <div className='whole-container'>
+            <div className='book-whole-container'>
                 <h3>{selectedBook[0].title}</h3>
                 <div className='book-box'>
                     <br/>

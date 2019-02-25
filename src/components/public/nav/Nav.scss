@@ -69,14 +69,22 @@
     overflow-x: hidden;
     transition: max-height 0.5s;
     margin-left: 10px;
+    ul{
+        list-style-type: none;
+    }
 
 
 }
 
 .books{
+
     transition: color 0.2s;
     &:hover{
         color: $highlight;
+    }
+    li{
+        padding: 5px 0px;
+        margin: initial;
     }
 }
 

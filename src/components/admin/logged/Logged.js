@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Bookhandles from './Bookhandles'
 import Adminhandles from './Adminhandles'
-import './Logged.css'
+import './Logged.scss'
 
 class Logged extends Component{
     constructor(){
@@ -13,7 +13,7 @@ class Logged extends Component{
 
     render(){
         return(
-            <div>
+            <div className='whole-admin-container'>
               <Bookhandles/>
               <Adminhandles/>
             </div>

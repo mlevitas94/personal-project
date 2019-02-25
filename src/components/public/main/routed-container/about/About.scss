@@ -1,0 +1,40 @@
+@import '../../../../../assets/variables';
+.about-whole-container{
+    font-family: $globalfont;
+    h1{
+        margin: 0px;
+    }
+}
+.about-container{
+  @include card;
+    width: 70%;
+    margin: 0px auto;
+    .about-split{
+        padding: 50px 0px;
+        display: flex;
+        align-items: center;
+        .left{
+            width: 50%;
+            text-align: center;
+            img{
+                width: 200px;
+                @include card;
+            }
+            p{
+                margin: 20px auto 0px auto;
+                width: 80%;
+                // line-height: 100%;
+            }
+        }
+        .right{
+            width: 50%;
+            text-align: center;
+            .twitter-feed{
+                margin:0px auto;
+                width: 200px;
+                height: 400px;
+                background-color: darkblue;
+            }
+        }
+    }
+}

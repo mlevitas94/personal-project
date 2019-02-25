@@ -58,13 +58,14 @@ class Login extends Component {
     render(){
         return(
             <div className='admin-container'>
-            <h1>Welcome to the admin page</h1>
+            <h1>Admin Login</h1>
             
             <div className='login'>
                 <p>Username</p>
                 <input type='text' value={this.state.username} onChange={(e) => this.handleInputChange('username', e.target.value)}/>
                 <p>Password</p>
                 <input type='password' value={this.state.password} onChange={(e) => this.handleInputChange('password', e.target.value)}/>
+                <br/>
                 <br/>
                 <button onClick={() => this.login()}>Login</button>
             

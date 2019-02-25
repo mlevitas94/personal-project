@@ -1,15 +1,25 @@
+.whole-admin-container{
+    height: 100vh;
+    overflow: scroll;
+}
+
 .handle-container{
     text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0px auto;
+    .add-auth{
+        .add-inputs{
+            height: 0px; 
+            overflow: hidden;
+        }
+    }
 }
 
 .handle-container button{
     margin: 20px 0px;
 }
 
-.add-inputs{
-    /* height: 0px; */
-    overflow: hidden;
-}
 
 .delete-list{
    height: 0px;
@@ -18,7 +28,7 @@
 }
 
 .edit-inputs{
-    /* height: 0px; */
+     height: 0px;
     overflow: hidden;
 }
 

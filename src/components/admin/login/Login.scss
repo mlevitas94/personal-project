@@ -1,9 +1,33 @@
+@import '../../../assets/variables';
 .admin-container{
+    @include card;
+    font-family: $globalfont;
     margin: 0px auto;
-    background-color: aquamarine;
     text-align: center;
+    width: 70%;
 }
 
 .login{
     margin: 0px auto;
+    input{
+        font-family: $globalfont;
+        font-weight: 600;
+        height:20px;
+        border-radius: 10px;
+        padding:0px 10px;
+        border:none;
+        width:130px;
+        transition: width 0.3s;
+        &:focus{
+            outline:none;
+            border:none;
+            width: 150px;
+        }
+    }
+    button{
+        @include button;
+        border:none;
+        margin: 10px 0px;
+
+    }
 }
