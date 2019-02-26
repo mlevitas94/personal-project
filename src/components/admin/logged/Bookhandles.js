@@ -80,7 +80,7 @@ class Bookhandles extends Component{
                 }).catch(err => {
                     console.log(err)
                 })  
-              })
+            })
               .catch(err => {
                 if (err.response.status === 403) {
                   alert(
@@ -93,7 +93,6 @@ class Bookhandles extends Component{
                 }
               });
           };
-
 
         const imageInput = document.getElementById('imageInput').files[0]
         getSignedRequest(imageInput)
@@ -109,10 +108,17 @@ class Bookhandles extends Component{
 
 
     render(){
+        const bookScrolls = (sel, trans) => {
+            document.querySelector('.add-inputs').classList.remove('add-inputs-extend')
+            document.querySelector('.delete-list').classList.remove('delete-list-extend')
+            document.querySelector('.edit-inputs').classList.remove('edit-inputs-extend')
+
+            document.querySelector(`${sel}`).classList.toggle(`${trans}`)
+        }
 
         const toBeDeleted = this.props.books.map((book, i) => {
             return (
-                <div key={i}>
+                <div className='tobedeleted' key={i}>
                     <span>{book.title}</span>
                     <br/>
                     <button onClick={() => this.deleteBook(book.book_id)}>Delete</button>
@@ -140,7 +146,10 @@ class Bookhandles extends Component{
         return(
             <div className='handle-container'>
                 <div className='add-auth'>
-                    <button>Add a Book</button>
+                    <button onClick={() => {
+                        bookScrolls('.add-inputs', 'add-inputs-extend')
+                        console.log('clicked')
+                    }}>Add a Book</button>
                     <br/>
 
                     {/* hidden with overflow and height */}
@@ -152,7 +161,7 @@ class Bookhandles extends Component{
 
                         <span>Purchase Link:</span>
                         <br/>
-                        <input type='url' value={this.state.add.purchaselink} onChange={(e) => this.updateAddInput( 'purchaselink',e.target.value)}/>
+                        <input type='url' incvalue={this.state.add.purchaselink} onChange={(e) => this.updateAddInput( 'purchaselink',e.target.value)}/>
                         <br/>
 
                         <span>Image:</span>
@@ -186,7 +195,9 @@ class Bookhandles extends Component{
 
                 </div>
                 <div className='delete-auth'>
-                    <button>Delete a Book</button>
+                    <button onClick={() =>{
+                        bookScrolls('.delete-list', 'delete-list-extend')
+                    }}>Delete a Book</button>
                     <br/>
 
                     {/* hidden with overflow and height */}
@@ -195,7 +206,9 @@ class Bookhandles extends Component{
                     </div>
                 </div>    
                 <div className='edit-auth'> 
-                    <button>Edit a Book</button>
+                    <button onClick={() => {
+                        bookScrolls('.edit-inputs', 'edit-inputs-extend')
+                    }}>Edit a Book</button>
                     <br/>
                     <div className='edit-inputs'>
                         {toEdit}

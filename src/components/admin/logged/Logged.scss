@@ -6,14 +6,84 @@
 }
 
 .handle-container{
-    text-align: center;
+    @include card;
+    height: 500px;
     display: flex;
     justify-content: space-evenly;
-    margin: 0px auto;
+    button:hover{
+        cursor: pointer;
+    }
     .add-auth{
+        text-align: center;
         .add-inputs{
-            height: 0px; 
+            max-height: 0px; 
+            width: 200px;
             overflow: hidden;
+            opacity: 0;
+            transition: 1s;
+            input{
+                @include textinput;
+            }
+            button{
+                margin: 20px 0px;
+            }
+        }
+        .add-inputs-extend{
+            max-height: 400px;
+            opacity: 1;
+        }
+    }
+    .delete-auth{
+        text-align: center;
+        .delete-list{
+            max-height: 0px;
+            overflow-x: scroll;
+            opacity: 0;
+            width: 200px;
+            text-align: center;
+            transition: 1s;
+           overflow: hidden;
+           .tobedeleted{
+               margin: 10px auto;
+               button{
+                   margin: 5px auto;
+               }
+           }
+        
+        }
+        .delete-list-extend{
+            max-height: 400px;
+            opacity: 1;
+        }
+    }
+    .edit-auth{
+        text-align: center;
+        overflow:hidden;
+        .edit-inputs{
+            width: 200px;
+            opacity: 0;
+            max-height: 0px;
+            text-align: center;
+            overflow: hidden;
+            transition: 1s;
+
+            img{
+                width: 100px;
+            }
+            button{
+                margin: 5px 0px;
+            }
+            .edit-field{
+                height:0px;
+                overflow: hidden;
+                input{
+                    @include textinput;
+                }
+            }
+        }
+        .edit-inputs-extend{
+            opacity: 1;
+            max-height: 400px;
         }
     }
 }
@@ -24,25 +94,6 @@
 }
 
 
-.delete-list{
-   height: 0px;
-   overflow: hidden;
-
-}
-
-.edit-inputs{
-     height: 0px;
-    overflow: hidden;
-}
-
-.edit-inputs img{
-    width:100px;
-}
-
-.edit-field{
-    /* height:0px; */
-    overflow: hidden;
-}
 
 .admin-handle-container{
     text-align: center;

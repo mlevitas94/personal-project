@@ -27,3 +27,19 @@ $cardcolor: #000000e1;
     height: auto;
     color:white;
 }
+
+@mixin textinput{
+    font-family: $globalfont;
+    font-weight: 600;
+    height:20px;
+    border-radius: 10px;
+    padding:0px 10px;
+    border:none;
+    width:130px;
+    transition: width 0.3s;
+    &:focus{
+        outline:none;
+        border:none;
+        width: 150px;
+    }
+}
