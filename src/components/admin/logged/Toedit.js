@@ -97,14 +97,25 @@ class Toedit extends Component{
     render(){
         const  {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state
         const {id} = this.props
+
+        const dropDownEdit = (id) =>{
+          const allEditFields = document.querySelectorAll('.edit-field')
+          for(let i = 0; i < allEditFields.length; i++){
+            if(allEditFields[i].classList.contains('edit-field-extend')){
+              allEditFields[i].classList.remove('edit-field-extend')
+            }
+          }
+          document.querySelector(`#editbutton-${id}`).classList.toggle('edit-field-extend')
+          
+        }
         return(
         <div>
             <span>{this.props.title}</span>
             <br/> 
-            <button>Edit this book</button>
+            <button onClick={() => dropDownEdit(id)}>Edit this book</button>
 
             {/* fields pop up when clicked, hidden with overflow and height */}
-            <div className='edit-field'>
+            <div id={`editbutton-${id}`} className='edit-field'>
                 <span>Title:</span>
                     <br/>
                     <input type='text' defaultValue={this.props.title} onChange={(e) => this.updateEditInput('title', e.target.value)}/>
@@ -142,7 +153,7 @@ class Toedit extends Component{
                     <input type='text' defaultValue={this.props.favsnip} onChange={(e) => this.updateEditInput('favsnip', e.target.value)}/>
                     <br/>
                     <button onClick={() => {
-                        this.editBook(id, title, purchaselink, price, info, kprice, favsnip)}}>Edit</button>
+                        this.editBook(id, title, purchaselink, price, info, kprice, favsnip)}}>Send Edit</button>
                     
             </div>
         </div>

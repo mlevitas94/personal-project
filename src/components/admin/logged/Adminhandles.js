@@ -104,10 +104,15 @@ class Adminhandles extends Component{
             )
         })
 
+        const highlight = (id) => {
+            document.querySelector(`${id}`).classList.toggle('check-container-highlight')
+        }
+
         return(
             <div className='admin-handle-container'>
+                <h1>Admin Control</h1>
                 <div className='add-admin-container'>
-                    <h1>Register a new admin</h1>
+                    <h3>Register a new admin</h3>
 
                     <span>First name:</span>
 
@@ -136,20 +141,36 @@ class Adminhandles extends Component{
                     <span>Privileges:</span>
 
                     <br/>
+                    <div className='add-checks'>
+                        <div className='check-container' id='check-one'>
 
-                    <span>Add books:</span>
-                    <input type='checkbox' checked={this.state.add} onChange={()=>this.updateAdminPrivs('add')}/>
+                            <span>Add books:</span>
+                            <input type='checkbox' checked={this.state.add} onChange={()=>{
+                                highlight('#check-one')
+                                this.updateAdminPrivs('add')}}/>
 
-                    <br/>
+                        </div>
+                        <br/>
 
-                    <span>Delete books:</span>
-                    <input type='checkbox' checked={this.state.remove} onChange={()=>this.updateAdminPrivs('remove')}/>
+                        <div className='check-container' id='check-two'>
+                            <span>Delete books:</span>
+                            <input type='checkbox' checked={this.state.remove} onChange={()=>{
+                                highlight('#check-two')
+                                this.updateAdminPrivs('remove')}}/>
 
-                    <br/>
+                        </div>
 
-                    <span>Edit books:</span>
-                    <input type='checkbox' checked={this.state.edit} onChange={()=>this.updateAdminPrivs('edit')}/>
+                        <br/>
 
+                        <div className='check-container' id='check-three'>
+
+                            <span>Edit books:</span>
+                            <input type='checkbox' checked={this.state.edit} onChange={()=>{
+                                highlight('#check-three')
+                                this.updateAdminPrivs('edit')}}/>
+
+                        </div>
+                    </div>
                     <br/>
 
                     <span>Password:</span>

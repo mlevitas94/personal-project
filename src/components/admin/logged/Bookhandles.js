@@ -148,7 +148,6 @@ class Bookhandles extends Component{
                 <div className='add-auth'>
                     <button onClick={() => {
                         bookScrolls('.add-inputs', 'add-inputs-extend')
-                        console.log('clicked')
                     }}>Add a Book</button>
                     <br/>
 

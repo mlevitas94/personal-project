@@ -3,13 +3,19 @@
 .whole-admin-container{
     height: 100vh;
     overflow: scroll;
+    width: 100%;
 }
 
+.whole-admin-container::-webkit-scrollbar-thumb{
+    background-color:#2e2c2c;
+}
 .handle-container{
     @include card;
     height: 500px;
     display: flex;
     justify-content: space-evenly;
+    width:80%;
+    margin: 0px auto;
     button:hover{
         cursor: pointer;
     }
@@ -26,6 +32,12 @@
             }
             button{
                 margin: 20px 0px;
+                background-color: rgb(46, 44, 44);
+                box-shadow: none;
+                border: solid 0.4px white;
+                &:focus{
+                    outline:none;
+                }
             }
         }
         .add-inputs-extend{
@@ -47,6 +59,12 @@
                margin: 10px auto;
                button{
                    margin: 5px auto;
+                   background-color: rgb(46, 44, 44);
+                   box-shadow: none;
+                   border: solid 0.4px white;
+                   &:focus{
+                    outline:none;
+                }
                }
            }
         
@@ -64,21 +82,34 @@
             opacity: 0;
             max-height: 0px;
             text-align: center;
-            overflow: hidden;
+            overflow-x: scroll;
             transition: 1s;
+            margin-top: 5px;
 
             img{
                 width: 100px;
             }
             button{
                 margin: 5px 0px;
+                background-color: rgb(46, 44, 44);
+                box-shadow: none;
+                border: solid 0.4px white;
+                &:focus{
+                    outline:none;
+                }
             }
             .edit-field{
-                height:0px;
+                max-height:0px;
                 overflow: hidden;
+                opacity: 0;
+                transition: 1s;
                 input{
                     @include textinput;
                 }
+            }
+            .edit-field-extend{
+                max-height: 520px;
+                opacity: 1;
             }
         }
         .edit-inputs-extend{
@@ -96,5 +127,35 @@
 
 
 .admin-handle-container{
+    @include card;
+    width: 80%;
+    margin: 0px auto;
     text-align: center;
+    input{
+        @include textinput;
+    }
+    .add-admin-container{
+        .add-checks{
+            margin: 0px auto;
+            width:30%;
+            .check-container{
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                background-color: transparent;
+                border-radius: 10px;
+                transition: 0.5s;
+            }
+            input{
+                margin:0px;
+                width:20%;
+                cursor: pointer;
+
+               
+            }
+            .check-container-highlight{
+                background-color:#2e2c2c;
+            }
+        }
+    }
 }
