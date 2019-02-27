@@ -123,12 +123,19 @@
                 overflow: hidden;
                 opacity: 0;
                 transition: 1s;
+                #edit-book-check{
+                    font-size: 12px;
+                    color: rgb(238, 76, 76);
+                }
+                #edit-book-success{
+                    font-size: 12px;
+                }
                 input{
                     @include textinput;
                 }
             }
             .edit-field-extend{
-                max-height: 520px;
+                max-height: 550px;
                 opacity: 1;
             }
         }
@@ -208,7 +215,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: flex-end;
-            width:30%;
+            width:60%;
             overflow:scroll;
             margin: 20px auto;
             padding: 10px 0px;

@@ -21,7 +21,7 @@ class Toedit extends Component{
             [input]: val
         })
     }
-    async editBook(id, title, purchaselink, price, info, kprice, favsnip){
+    async editBook(id){
 
         const getSignedRequest = async (file) => {
             console.log(file)
@@ -53,11 +53,13 @@ class Toedit extends Component{
             axios
               .put(signedRequest, file, options)
               .then(res => {
+                const  {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state
                 let toEdit = {title, purchaselink, imageurl:url, price, info, kprice, favsnip}
                 axios.put(`/api/books/${id}`, toEdit)
                 .then(res => {
                     this.props.updateList(res.data)
-                    console.log('edit happened')
+                    document.getElementById(`edit-book-check-${id}`).innerHTML = ''
+                    document.getElementById(`edit-book-success-${id}`).innerHTML='Success!'
                 })
                 .catch(err => {
                     console.log(err)
@@ -76,26 +78,36 @@ class Toedit extends Component{
               });
           };
           const editFileInput = document.getElementById(`input-${this.props.id}`).files[0]
-          console.log(editFileInput)
-          if(!editFileInput){
-            let toEdit = {title, purchaselink, price, info, kprice, favsnip}
-            axios.put(`/api/books/${id}`, toEdit)
-            .then(res => {
-                this.props.updateList(res.data)
-                console.log('book updated w/o img')
-            })
-            .catch(err => {
-                console.log(err)
-            })
+          const  {title, purchaselink, price, info, kprice, favsnip} = this.state
+          if(!title || !purchaselink || !price || !info || !kprice || !favsnip){
+            document.getElementById(`edit-book-check-${id}`).innerHTML = 'Please make sure all fields are filled'
+            document.getElementById(`edit-book-success-${id}`).innerHTML = ''
           }else{
-            getSignedRequest(editFileInput)
+            if(!editFileInput){
+            let toEdit = {title, purchaselink, price, info, kprice, favsnip}
+            document.getElementById(`edit-book-check-${id}`).innerHTML = ''
+            document.getElementById(`edit-book-success-${id}`).innerHTML='Updating book...'
+            axios.put(`/api/books/${id}`, toEdit)
+              .then(res => {
+                  this.props.updateList(res.data)
+                  document.getElementById(`edit-book-check-${id}`).innerHTML = ''
+                  document.getElementById(`edit-book-success-${id}`).innerHTML='Success!'
+              })
+              .catch(err => {
+                  console.log(err)
+              })
+            }else{
+              document.getElementById(`edit-book-check-${id}`).innerHTML = ''
+              document.getElementById(`edit-book-success-${id}`).innerHTML='Updating book...'
+              getSignedRequest(editFileInput)
 
+            }
           }
+
 
     }
 
     render(){
-        const  {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state
         const {id} = this.props
 
         const dropDownEdit = (id) =>{
@@ -152,8 +164,11 @@ class Toedit extends Component{
                     <br/>
                     <input type='text' defaultValue={this.props.favsnip} onChange={(e) => this.updateEditInput('favsnip', e.target.value)}/>
                     <br/>
+                    <span style={ {fontSize: '12px', color:' rgb(238, 76, 76)'} } id={`edit-book-check-${id}`}></span>
+                    <span style={{fontSize: '12px'}} id={`edit-book-success-${id}`}></span>
+                    <br/>
                     <button onClick={() => {
-                        this.editBook(id, title, purchaselink, price, info, kprice, favsnip)}}>Send Edit</button>
+                        this.editBook(id)}}>Send Edit</button>
                     
             </div>
         </div>
