@@ -137,6 +137,10 @@
         @include textinput;
     }
     .add-admin-container{
+        border-bottom: solid 1px white;
+        width:80%;
+        margin: 0px auto;
+        padding-bottom: 30px;
         .add-checks{
             margin: 0px auto;
             width:30%;
@@ -167,6 +171,31 @@
             border: solid 0.4px white;
             &:focus{
                 outline:none;
+            }
+        }
+    }
+
+    .delete-container{
+        border-bottom: solid 1px white;
+        padding-bottom: 20px;
+        width:80%;
+        margin: 0px auto;
+        .delete-admin-container{
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+            width:30%;
+            overflow:scroll;
+            margin: 20px auto;
+            padding: 10px 0px;
+            border-bottom: solid 1px white;
+            border-top: solid 1px white;
+            .admindelete{
+                width: 200px;
+                margin: 0px 30px;
+                button{
+                     width:100px;
+                }
             }
         }
     }

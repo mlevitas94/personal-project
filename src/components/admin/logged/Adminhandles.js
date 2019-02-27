@@ -192,16 +192,18 @@ class Adminhandles extends Component{
                     <button onClick={() => this.registerAdmin()}>Create Admin</button>
                 </div>
                 <br/>
-
-                <div className='delete-admin-container'>
-                    {deleteAdmin}
-
+                <div className='delete-container'>
+                    <h3>Remove an Admin from service</h3>
+                    <div className='delete-admin-container'>
+                        {deleteAdmin}
+                    </div>
                 </div>
-
-                <div className='edit-admin-container'>
-                    {editAdmin}
-                </div>    
-
+                <div>
+                    <h3>Edit admin Privileges</h3>
+                    <div className='edit-admin-container'>
+                        {editAdmin}
+                    </div>    
+                </div>
             </div>
         )
     }
