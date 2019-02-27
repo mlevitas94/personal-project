@@ -119,6 +119,8 @@
     }
 }
 
+//adminssss
+
 .handle-container button{
     @include button;
     border:none;
@@ -155,6 +157,16 @@
             }
             .check-container-highlight{
                 background-color:#2e2c2c;
+            }
+        }
+        button{
+            @include button;
+            margin-top:10px;
+            background-color: rgb(46, 44, 44);
+            box-shadow: none;
+            border: solid 0.4px white;
+            &:focus{
+                outline:none;
             }
         }
     }
