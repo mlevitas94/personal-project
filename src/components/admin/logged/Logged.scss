@@ -4,6 +4,22 @@
     height: 100vh;
     overflow: scroll;
     width: 100%;
+    text-align: center;
+    ::placeholder{
+        font-size: 10px;
+    }
+    .logout{
+        @include button;
+        box-shadow: none;
+        border: solid 1px white;
+        background-color:rgb(46, 44, 44); 
+        border-radius: 20px;
+        width: 20%;
+        &:focus{
+            outline: none;
+        }
+
+    }
 }
 
 .whole-admin-container::-webkit-scrollbar-thumb{
@@ -18,11 +34,13 @@
         border-bottom: solid 1px white;
     }
 }
+
 .handle-container{
-    height: 500px;
+    height: 100px;
     display: flex;
     justify-content: space-evenly;
     margin: 0px auto;
+    transition: height 1s;
     button:focus{
         outline: none;
     }
@@ -145,6 +163,9 @@
         }
     }
 }
+.handle-container-extend{
+    height: 475px;
+}
 
 //adminssss
 
@@ -191,6 +212,13 @@
             .check-container-highlight{
                 background-color:#2e2c2c;
             }
+        }
+        #create-admin-check{
+            font-size: 12px;
+            color:rgb(238, 76, 76);
+        }
+        #create-admin-success{
+            font-size: 12px;
         }
         button{
             @include button;

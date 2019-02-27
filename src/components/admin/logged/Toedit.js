@@ -147,19 +147,19 @@ class Toedit extends Component{
 
                     <span>Price:</span>
                     <br/>
-                    <input type='text' defaultValue={this.props.price} onChange={(e) => this.updateEditInput('price', e.target.value)}/>
+                    <input type='text' placeholder='whole amount / ex: 4 or 12' defaultValue={this.props.price} onChange={(e) => this.updateEditInput('price', e.target.value)}/>
+                    <br/>
+
+                    <span>Kindle Price:</span>
+                    <br/>
+                    <input type='text' placeholder='whole amount / ex: 4 or 12' defaultValue={this.props.kprice} onChange={(e) => this.updateEditInput('kprice', e.target.value)}/>
                     <br/>
 
                     <span>Info:</span>
                     <br/>
                     <input type='text' defaultValue={this.props.info} onChange={(e) => this.updateEditInput('info', e.target.value)}/>
                     <br/>
-
-                    <span>Kindle Price:</span>
-                    <br/>
-                    <input type='text' defaultValue={this.props.kprice} onChange={(e) => this.updateEditInput('kprice', e.target.value)}/>
-                    <br/>
-
+                    
                     <span>Favorite Snippet:</span>
                     <br/>
                     <input type='text' defaultValue={this.props.favsnip} onChange={(e) => this.updateEditInput('favsnip', e.target.value)}/>

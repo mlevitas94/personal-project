@@ -40,29 +40,51 @@ class Adminhandles extends Component{
            [priv]: !this.state[priv]
         })
     }
-    adminDelete(id){
-        axios.delete(`/admin/deleteadmin/${id}`)
-        .then(res =>{
-           this.props.getAdmins(res.data)
-        }).catch(err => {
-            console.log(err)
-        })
-    }
-    registerAdmin(){
-        const {firstname,lastname,username,password,cpassword,add,remove,edit} = this.state
-        const addUserInfo = {firstname, lastname, username, password, cpassword, add, remove, edit}
-        if(password === cpassword){
-            axios.post('/admin/register', addUserInfo)
-            .then(res => {
-                console.log(res.data)
-                this.setState({
-                    firstname:'', lastname:'', username:'', password:'', cpassword:'', add: false, remove:false, edit: false
-                })
+    adminDelete(id, first, last, user){
+        let confirm = window.confirm(`Are you sure you want to remove website acces from ${first} ${last} (${user})?`)
+        if(confirm){
+            axios.delete(`/admin/deleteadmin/${id}`)
+            .then(res =>{
+               this.props.getAdmins(res.data)
             }).catch(err => {
                 console.log(err)
             })
         }else{
-            console.log('passwords need to match')
+            return
+        }
+    }
+    registerAdmin(){
+        const {firstname,lastname,username,password,cpassword,add,remove,edit} = this.state
+        const addUserInfo = {firstname, lastname, username, password, cpassword, add, remove, edit}
+        const check = document.getElementById('create-admin-check')
+        const scheck = document.getElementById('create-admin-success')
+        if(firstname && lastname && username && password && cpassword){
+            if(add || remove || edit){
+                if(password === cpassword){
+                    check.innerHTML=''
+                    scheck.innerHTML = 'Registering Admin...'
+                    axios.post('/admin/register', addUserInfo)
+                    .then(res => {
+                        check.innerHTML=''
+                        scheck.innerHTML='Admin Successfully created!'
+                        document.querySelectorAll('.check-container').forEach(item => {
+                            item.classList.remove('check-container-highlight')
+                        })
+                        this.setState({
+                            firstname:'', lastname:'', username:'', password:'', cpassword:'', add: false, remove:false, edit: false
+                        })
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }else{
+                    check.innerHTML = 'Please make sure passwords match'
+                }
+
+            }else{
+                check.innerHTML= 'Please give the admin at least one privilege'
+            }
+        }else{
+            check.innerHTML='Please make sure all fields are filled'
         }
     }
 
@@ -84,7 +106,9 @@ class Adminhandles extends Component{
                     <br/>
                     <span>{`(${admin.username})`}</span>
                     <br/>
-                    <button onClick={() => this.adminDelete(admin.admin_id)}>Delete admin</button>
+                    <button onClick={() => 
+                        this.adminDelete(admin.admin_id, admin.first_name, admin.last_name, admin.username)}>
+                    Delete admin</button>
                 </div>
             )
         })
@@ -187,6 +211,9 @@ class Adminhandles extends Component{
 
                     <input type='password' value={this.state.cpassword} onChange={(e) => this.addAdminInputs('cpassword', e.target.value)}/>
 
+                    <br/>
+                    <span id='create-admin-check'></span>
+                    <span id='create-admin-success'></span>
                     <br/>
 
                     <button onClick={() => this.registerAdmin()}>Create Admin</button>
