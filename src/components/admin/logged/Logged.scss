@@ -38,6 +38,13 @@
             overflow: hidden;
             opacity: 0;
             transition: 1s;
+            #add-book-check{
+                font-size: 12px;
+                color: rgb(238, 76, 76);
+            }
+            #add-book-success{
+                font-size: 12px;
+            }
             input{
                 @include textinput;
             }
@@ -66,7 +73,7 @@
             width: 200px;
             text-align: center;
             transition: 1s;
-           overflow: hidden;
+           overflow: scroll;
            .tobedeleted{
                margin: 10px auto;
                button{
@@ -211,6 +218,10 @@
                 margin: 0px 30px;
                 button{
                      width:100px;
+                     @include button;
+                     box-shadow: none;
+                     border: solid 1px white;
+                     background-color: rgb(46, 44, 44);
                 }
             }
         }

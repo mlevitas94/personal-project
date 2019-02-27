@@ -76,6 +76,7 @@ class Bookhandles extends Component{
                     this.setState({
                         add: { title: '',purchaselink: '',imageurl:'',price: '',info:'', kprice: '',favsnip:''}
                     }) 
+                    document.getElementById('add-book-success').innerHTML = 'Book succesfully uploaded!'
                     this.props.getBooks(res.data)  
                 }).catch(err => {
                     console.log(err)
@@ -93,9 +94,16 @@ class Bookhandles extends Component{
                 }
               });
           };
-
-        const imageInput = document.getElementById('imageInput').files[0]
-        getSignedRequest(imageInput)
+          const imageInput = document.getElementById('imageInput').files[0]
+          const {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state.add
+          if(!title || !purchaselink || !imageInput || !price || !info || !kprice || !favsnip){
+            document.getElementById('add-book-check').innerHTML = 'Please make sure all fields are filled'
+            document.getElementById('add-book-success').innerHTML = ''
+          }else{
+            document.getElementById('add-book-check').innerHTML = ''
+            document.getElementById('add-book-success').innerHTML = 'Uploading book...'
+            getSignedRequest(imageInput)
+          }
     }
     deleteBook(id){
         axios.delete(`/api/books/${id}`)
@@ -162,7 +170,7 @@ class Bookhandles extends Component{
 
                             <span>Purchase Link:</span>
                             <br/>
-                            <input type='url' incvalue={this.state.add.purchaselink} onChange={(e) => this.updateAddInput( 'purchaselink',e.target.value)}/>
+                            <input type='url' value={this.state.add.purchaselink} onChange={(e) => this.updateAddInput( 'purchaselink',e.target.value)}/>
                             <br/>
 
                             <span>Image:</span>
@@ -188,6 +196,9 @@ class Bookhandles extends Component{
                             <span>Favorite Snippet:</span>
                             <br/>
                             <input type='text' value={this.state.add.favsnip} onChange={(e) => this.updateAddInput('favsnip',e.target.value)}/>
+                            <br/>
+                            <span id='add-book-check'></span>
+                            <span id= 'add-book-success'></span>
                             <br/>
 
                             <button onClick={() => this.addBook()}>Add Book</button>

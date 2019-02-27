@@ -9,6 +9,7 @@
   @include card;
     width: 70%;
     margin: 0px auto;
+    padding: 0px 30px;
     .about-split{
         padding: 50px 0px;
         display: flex;
@@ -23,7 +24,6 @@
             p{
                 margin: 20px auto 0px auto;
                 width: 80%;
-                // line-height: 100%;
             }
         }
         .right{
