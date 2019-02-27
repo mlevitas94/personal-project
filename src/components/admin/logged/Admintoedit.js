@@ -18,9 +18,10 @@ class Admintoedit extends Component{
         const {add, remove, edit} = this.state
         return(
             <div className='adminedit'>
-               <span>{`${this.props.firstname} ${this.props.lastname}`}</span>
+               <span className='fullname'>{`${this.props.firstname} ${this.props.lastname}`}</span>
                <br/>
-               <span>{`(${this.props.username})`}</span>
+               <span className='edit-username'>{`(${this.props.username})`}</span>
+               <br/>
                <br/>
                <span>Add:</span>
                <input type='checkbox' checked={this.state.add} onChange={() => this.updateAdminPrivs('add')}/>

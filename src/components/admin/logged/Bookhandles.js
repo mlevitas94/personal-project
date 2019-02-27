@@ -144,79 +144,82 @@ class Bookhandles extends Component{
 
         })
         return(
-            <div className='handle-container'>
-                <div className='add-auth'>
-                    <button onClick={() => {
-                        bookScrolls('.add-inputs', 'add-inputs-extend')
-                    }}>Add a Book</button>
-                    <br/>
-
-                    {/* hidden with overflow and height */}
-                    <div className='add-inputs'> 
-                        <span>Title:</span>
-                        <br/>
-                        <input type='text' value={this.state.add.title} onChange={(e) => this.updateAddInput( 'title',e.target.value)}/>
+            <div className='book-handles'>
+            <h1>Book Handles</h1>
+                <div className='handle-container'>
+                    <div className='add-auth'>
+                        <button onClick={() => {
+                            bookScrolls('.add-inputs', 'add-inputs-extend')
+                        }}>Add a Book</button>
                         <br/>
 
-                        <span>Purchase Link:</span>
-                        <br/>
-                        <input type='url' incvalue={this.state.add.purchaselink} onChange={(e) => this.updateAddInput( 'purchaselink',e.target.value)}/>
-                        <br/>
+                        {/* hidden with overflow and height */}
+                        <div className='add-inputs'> 
+                            <span>Title:</span>
+                            <br/>
+                            <input type='text' value={this.state.add.title} onChange={(e) => this.updateAddInput( 'title',e.target.value)}/>
+                            <br/>
 
-                        <span>Image:</span>
-                        <br/>
-                        <input id='imageInput' type='file' accept='image/*'/>
-                        <br/>
+                            <span>Purchase Link:</span>
+                            <br/>
+                            <input type='url' incvalue={this.state.add.purchaselink} onChange={(e) => this.updateAddInput( 'purchaselink',e.target.value)}/>
+                            <br/>
 
-                        <span>Price:</span>
-                        <br/>
-                        <input type='text' value={this.state.add.price} onChange={(e) => this.updateAddInput( 'price',e.target.value)}/>
-                        <br/>
+                            <span>Image:</span>
+                            <br/>
+                            <input id='imageInput' type='file' accept='image/*'/>
+                            <br/>
 
-                        <span>Info:</span>
-                        <br/>
-                        <input type='text' value={this.state.add.info} onChange={(e) => this.updateAddInput( 'info',e.target.value)}/>
-                        <br/>
+                            <span>Price:</span>
+                            <br/>
+                            <input type='text' value={this.state.add.price} onChange={(e) => this.updateAddInput( 'price',e.target.value)}/>
+                            <br/>
 
-                        <span>Kindle Price:</span>
-                        <br/>
-                        <input type='text' value={this.state.add.kprice} onChange={(e) => this.updateAddInput( 'kprice',e.target.value)}/>
-                        <br/>
+                            <span>Info:</span>
+                            <br/>
+                            <input type='text' value={this.state.add.info} onChange={(e) => this.updateAddInput( 'info',e.target.value)}/>
+                            <br/>
 
-                        <span>Favorite Snippet:</span>
-                        <br/>
-                        <input type='text' value={this.state.add.favsnip} onChange={(e) => this.updateAddInput('favsnip',e.target.value)}/>
-                        <br/>
+                            <span>Kindle Price:</span>
+                            <br/>
+                            <input type='text' value={this.state.add.kprice} onChange={(e) => this.updateAddInput( 'kprice',e.target.value)}/>
+                            <br/>
 
-                        <button onClick={() => this.addBook()}>Add Book</button>
+                            <span>Favorite Snippet:</span>
+                            <br/>
+                            <input type='text' value={this.state.add.favsnip} onChange={(e) => this.updateAddInput('favsnip',e.target.value)}/>
+                            <br/>
+
+                            <button onClick={() => this.addBook()}>Add Book</button>
+
+                        </div>
 
                     </div>
+                    <div className='delete-auth'>
+                        <button onClick={() =>{
+                            bookScrolls('.delete-list', 'delete-list-extend')
+                        }}>Delete a Book</button>
+                        <br/>
+
+                        {/* hidden with overflow and height */}
+                        <div className='delete-list'>
+                            {toBeDeleted}
+                        </div>
+                    </div>    
+                    <div className='edit-auth'> 
+                        <button onClick={() => {
+                            bookScrolls('.edit-inputs', 'edit-inputs-extend')
+                        }}>Edit a Book</button>
+                        <br/>
+                        <div className='edit-inputs'>
+                            {toEdit}
+
+                        </div>
+
+                    </div>    
 
                 </div>
-                <div className='delete-auth'>
-                    <button onClick={() =>{
-                        bookScrolls('.delete-list', 'delete-list-extend')
-                    }}>Delete a Book</button>
-                    <br/>
-
-                    {/* hidden with overflow and height */}
-                    <div className='delete-list'>
-                        {toBeDeleted}
-                    </div>
-                </div>    
-                <div className='edit-auth'> 
-                    <button onClick={() => {
-                        bookScrolls('.edit-inputs', 'edit-inputs-extend')
-                    }}>Edit a Book</button>
-                    <br/>
-                    <div className='edit-inputs'>
-                        {toEdit}
-
-                    </div>
-
-                </div>    
-
-            </div>
+            </div>    
         )
     }
 }

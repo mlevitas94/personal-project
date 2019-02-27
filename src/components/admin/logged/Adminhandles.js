@@ -112,7 +112,7 @@ class Adminhandles extends Component{
             <div className='admin-handle-container'>
                 <h1>Admin Control</h1>
                 <div className='add-admin-container'>
-                    <h3>Register a new admin</h3>
+                    <h3>Register a new Admin</h3>
 
                     <span>First name:</span>
 
@@ -198,8 +198,8 @@ class Adminhandles extends Component{
                         {deleteAdmin}
                     </div>
                 </div>
-                <div>
-                    <h3>Edit admin Privileges</h3>
+                <div className='edit-container'>
+                    <h3>Edit Admin Privileges</h3>
                     <div className='edit-admin-container'>
                         {editAdmin}
                     </div>    
