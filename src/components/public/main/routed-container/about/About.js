@@ -1,6 +1,7 @@
 import React from 'react'
 import './About.scss'
 import aboutpic from '../../../../../assets/thom1.jpg'
+import { TwitterTimelineEmbed} from 'react-twitter-embed';
 
 export default function About(){
     return(
@@ -20,9 +21,11 @@ export default function About(){
                         </p>
                     </div>
                     <div className='right'>
-                       <div className='twitter-feed'>
-
-                       </div>
+                    <TwitterTimelineEmbed
+                        sourceType="profile"
+                        screenName="thomratz"
+                        options={{height: 400}}
+/>
                     </div>
 
                 </div>
