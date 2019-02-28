@@ -67,7 +67,12 @@ app.get('/api/signs3', (req, res) => {
       return res.send(returnData);
     });
   });
+  const path = require('path'); // Usually moved to the start of file
 
+  app.get('*', (req, res)=>{
+      res.sendFile(path.join(__dirname, '../build/index.html'));
+  });
+  
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
     app.listen(SERVER_PORT, () => console.log(`Now arriving at ${SERVER_PORT}`));
