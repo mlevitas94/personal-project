@@ -5,7 +5,11 @@ import aboutpic from '../../../../../assets/thom1.jpg'
 export default function About(){
     return(
         <div className='about-whole-container'>
-            <h1>About Thom</h1>
+            <div className='header-container'>
+                <div className='side-line'></div>
+                <h1>About Thom</h1>
+                <div className='side-line'></div>
+            </div>    
             <div className='about-container'>
                 <div className='about-split'>
                     <div className='left'>

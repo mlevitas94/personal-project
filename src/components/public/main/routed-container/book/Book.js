@@ -13,7 +13,11 @@ class Book extends Component {
         if(selectedBook[0]){
         return (
             <div className='book-whole-container'>
-                <h3>{selectedBook[0].title}</h3>
+                <div className='header-container'>
+                    <div className='side-line'></div>
+                    <h1>{selectedBook[0].title}</h1>
+                    <div className='side-line'></div>
+                </div>    
                 <div className='book-box'>
                     <br/>
                     <div className='split'>

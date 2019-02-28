@@ -1,18 +1,28 @@
 @import '../../../../../assets/variables';
 .book-whole-container{
     font-family: $globalfont;
+    .header-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        margin-top: 30px;
+        margin-bottom: 50px;
+    
+        .side-line{
+            border-bottom: solid 1px black;
+            width: 150px;
+            margin: 0px 50px;
+        }
+    }
 }
 
-h3{
-    width: 100%;
-    text-align: center;
-}
 .book-box{
     background-color: chartreuse;
     width: 70%;
     margin: 25px auto 0px auto;
     @include card;
-
+    
 
     .split{
         display: flex;

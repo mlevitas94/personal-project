@@ -1,9 +1,8 @@
 @import '../../../../../assets/variables';
 .about-whole-container{
     font-family: $globalfont;
-    h1{
-        margin: 0px;
-    }
+    @include sidedashes;
+
 }
 .about-container{
   @include card;

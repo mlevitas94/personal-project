@@ -36,9 +36,16 @@ const Home = (props) =>{
         )
     })
     return(
-            <div className='books-container'>
-                {bookList}
-            </div>
+            <div className='whole-book-container' style={{fontFamily : 'Open Sans'}}>
+                <div className='header-container'>
+                    <div className='side-line'></div>
+                    <h1>Thom's Collection</h1>
+                    <div className='side-line'></div>
+                </div>    
+                <div className='books-container'>
+                    {bookList}
+                </div>
+            </div>    
     )
 }
 const mapToProps = reduxState =>{

@@ -43,3 +43,20 @@ $cardcolor: #000000e1;
         width: 150px;
     }
 }
+
+@mixin sidedashes{
+    .header-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        margin-top: 30px;
+        margin-bottom: 50px;
+    
+        .side-line{
+            border-bottom: solid 1px black;
+            width: 150px;
+            margin: 0px 50px;
+        }
+    }
+}

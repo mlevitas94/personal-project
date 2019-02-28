@@ -1,5 +1,8 @@
 @import '../../../../../assets/variables';
 
+.whole-book-container{
+    @include sidedashes;
+}
 .books-container{
     display: flex;
     justify-content: space-around;
