@@ -21,11 +21,15 @@ export default function About(){
                         </p>
                     </div>
                     <div className='right'>
-                    <TwitterTimelineEmbed
-                        sourceType="profile"
-                        screenName="thomratz"
-                        options={{height: 400}}
-/>
+                        <i class="fab fa-twitter"></i>
+                        <div>
+                            <TwitterTimelineEmbed
+                                sourceType="profile"
+                                screenName="thomratz"
+                                options={{height: 400}}
+                                />
+                                
+                        </div>
                     </div>
 
                 </div>

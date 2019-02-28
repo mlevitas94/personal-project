@@ -28,12 +28,14 @@
         .right{
             width: 50%;
             text-align: center;
-            .twitter-feed{
-                margin:0px auto;
-                width: 200px;
-                height: 400px;
-                background-color: darkblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .fa-twitter{
+                color: #38A1F3;
+                font-size: 40px;
             }
+
         }
     }
 }
