@@ -21,7 +21,7 @@ async componentDidMount(){
 }
   render() {
     return (
-        <div>
+        <div className='app-container'>
         {mainroutes}
       </div>  
     );

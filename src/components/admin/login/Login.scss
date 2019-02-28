@@ -1,14 +1,15 @@
 @import '../../../assets/variables';
 .admin-container{
-    @include card;
     font-family: $globalfont;
     margin: 0px auto;
     text-align: center;
     width: 70%;
+    height: 100vh;
 }
 
 .login{
-    margin: 0px auto;
+    @include card;
+    margin: 50px auto;
     input{
         @include textinput;
     }

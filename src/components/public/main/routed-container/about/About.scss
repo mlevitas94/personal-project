@@ -17,7 +17,7 @@
             width: 50%;
             text-align: center;
             img{
-                width: 200px;
+                width: 70%;
                 @include card;
             }
             p{
@@ -28,12 +28,10 @@
         .right{
             width: 50%;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             .fa-twitter{
                 color: #38A1F3;
                 font-size: 40px;
+                margin-bottom: 50px;
             }
 
         }
