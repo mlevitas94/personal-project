@@ -22,7 +22,7 @@ export default function About(){
                     </div>
                     <div className='right'>
                         <i class="fab fa-twitter"></i>
-                        <div>
+                        <div className='twitter-cont'>
                             <TwitterTimelineEmbed
                                 sourceType="profile"
                                 screenName="thomratz"

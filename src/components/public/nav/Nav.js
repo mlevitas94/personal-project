@@ -20,10 +20,11 @@ const Nav =(props) => {
     // const dropDown
     return(
         <div className='nav-container'>
-        <div>
             <h1>
                 Thom
             </h1>
+        <div className='burger'>
+            <i class="fas fa-bars"></i>
         </div>
             <ul className='nav-list'>
                 <li>

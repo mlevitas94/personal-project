@@ -1,7 +1,11 @@
+@import '../../../assets/variables';
 .main-container{
     width: 85%;
     overflow: scroll;
     height: 102%;
+    @media screen and (max-width: $breakmed){
+        width: 100%;
+    }
 }
 
 .main-container::-webkit-scrollbar{

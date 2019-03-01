@@ -13,11 +13,13 @@
         padding: 50px 0px;
         display: flex;
         align-items: center;
+        text-align: center;
         .left{
             width: 50%;
             text-align: center;
+            margin-right: 50px;
             img{
-                width: 70%;
+                width: 100%;
                 @include card;
             }
             p{
@@ -25,6 +27,12 @@
                 margin: 20px auto 0px auto;
                 padding-top: 15px;
                 width: 80%;
+                @media screen and (max-width: $breaklarge){
+                    width: 100%;
+                }
+            }
+            @media screen and (max-width: $breaklarge){
+                margin-right: 0px;
             }
         }
         .right{
@@ -34,8 +42,15 @@
                 color: #38A1F3;
                 font-size: 40px;
                 margin-bottom: 50px;
+                @media screen and (max-width:$breaklarge){
+                    margin-bottom:10px;
+                    margin-top: 30px;
+                }
             }
 
+        }
+        @media screen and (max-width: $breaklarge){
+            flex-direction: column;
         }
     }
 }
