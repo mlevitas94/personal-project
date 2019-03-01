@@ -29,7 +29,7 @@
 .book-handles{
     @include card;
     width: 80%;
-    margin: 0px auto;
+    margin: 50px auto;
     h1{
         border-bottom: solid 1px white;
     }
@@ -70,7 +70,7 @@
                 margin: 20px 0px;
                 background-color: rgb(46, 44, 44);
                 box-shadow: none;
-                border: solid 0.4px white;
+                border: solid 1px white;
                 &:focus{
                     outline:none;
                 }
@@ -98,7 +98,7 @@
                    margin: 5px auto;
                    background-color: rgb(46, 44, 44);
                    box-shadow: none;
-                   border: solid 0.4px white;
+                   border: solid 1px white;
                    &:focus{
                     outline:none;
                 }
@@ -131,7 +131,7 @@
                 margin: 5px 0px;
                 background-color: rgb(46, 44, 44);
                 box-shadow: none;
-                border: solid 0.4px white;
+                border: solid 1px white;
                 &:focus{
                     outline:none;
                 }
@@ -192,6 +192,7 @@
         padding-bottom: 30px;
         h3{
             border-bottom: solid 1px white;
+            margin: 25px auto;
         }
         .add-checks{
             margin: 0px auto;
@@ -225,7 +226,7 @@
             margin-top:10px;
             background-color: rgb(46, 44, 44);
             box-shadow: none;
-            border: solid 0.4px white;
+            border: solid 1px white;
             &:focus{
                 outline:none;
             }

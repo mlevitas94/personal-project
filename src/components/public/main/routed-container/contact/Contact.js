@@ -12,18 +12,25 @@ export default function Contact(){
             <div className='contact-container'>
                 <p className='first-contact'>If you would like to feature THOM to showcase any of his services, please use the contact information used below.</p>
                 <br/>
-                <p>Phone number: 908-798-0338</p>
-                <p>Email: Thomratz1906@gmail.com</p>
+                <p><span>Phone number </span>: 908-798-0338</p>
+                <br/>
+                <p><span>Email</span>: Thomratz1906@gmail.com</p>
                 <div className='social-medias'>
-                    <div>
+                <a target='_blank' href='https://www.instagram.com/thomratz/'>
+                    <div className='insta-cont'>
                         <i class="fab fa-instagram"></i>
                     </div>
-                    <div className='fb-cont'>
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <div>
-                        <i class="fab fa-twitter"></i>
-                    </div>
+                </a>
+                    <a target='_blank' href='https://www.facebook.com/thomratz/'>
+                        <div className='fb-cont'>
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                    </a>
+                    <a target='_blank' href='https://twitter.com/thomratz'>
+                        <div className='tw-cont'>
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

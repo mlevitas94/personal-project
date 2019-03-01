@@ -11,24 +11,65 @@
             font-size: 25px;
             border-bottom: solid 1px white;
             width: 60%;
+            padding-bottom: 25px;
             margin: 0px auto;
         }
+        p{
+            span{
+                text-decoration: underline;
+            }
+        }
         .social-medias{
-            font-size: 50px;
+            font-size: 40px;
             margin: 20px auto;
+            a{
+                color:white;
+            }
             div{
-                display: inline;
-                border-radius: 50px;
+                display: inline-block;
+                border-radius: 100px;
+                margin: 10px 20px;
+                width: 40px;
+                height: 60px;
+                padding: 10px 20px;
+                &:hover{
+                    animation-name: bounce;
+                    animation-duration: 0.7s;
+                    animation-timing-function: ease-out;
+                 }
             }
             .fab{
-                margin: 10px 20px;
+                margin: 0px auto;
             }
+            
             .fb-cont{
                 background-color: #4267b2;
+                &:hover{
+                   animation-name: bounce;
+                   animation-duration: 0.7s;
+                   animation-timing-function: ease-out;
+                }
+            }
+
+            .tw-cont{
+                background-color: #38A1F3;
+                &:hover{
+
+                }
+            }
+            .insta-cont{
+                background: linear-gradient(45deg, rgba(249,237,50,1) 14%, rgba(238,42,123,1) 54%, rgba(0,42,255,1) 100%);
             }
         }
         @include card;
         width: 80%;
         margin: 0px auto;
         text-align: center;
+    }
+
+    @keyframes bounce{
+        25% {transform: translate(0px, -10px)}
+        50% {transform: translate(0px, 0px)}
+        75% {transform: translate(0px, -5px)}
+        100% {transform: translate(0px, 0px)}
     }

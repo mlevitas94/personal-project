@@ -25,13 +25,19 @@ class Book extends Component {
                             <img src={`${selectedBook[0].image}`}/>
                         </div>
                         <div className='right'>
-                            <span>{selectedBook[0].price}</span>
+                            <span class='price'>Price: {`$${selectedBook[0].price}.00`}</span>
                             <br/>
-                            <span>{selectedBook[0].kindle_price}</span>
+                            <br/>
+                            <span class='kprice'>Kindle Price: {`$${selectedBook[0].kindle_price}.00`}</span>
+                            <br/>
+                            <br/>
+                            <a>Purchase This Book</a>
+                            <br/>
                             <br/>
                             <span>{selectedBook[0].info}</span>
                         </div>
-                    </div>    
+                    </div> 
+                    <h1>Thom's Favorite Snippet</h1>   
                     <p className='snip'>{selectedBook[0].fav_snip}</p>
                     <br/>
                 </div>
