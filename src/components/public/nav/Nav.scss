@@ -30,16 +30,18 @@
         }
     }
     .drop-two{
+        width: 100%;
         overflow: scroll;
-        ul{
-            list-style: none;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
             a{
                 color:white;
                 text-decoration: none;
-                display: inline-block;
                 margin: 0px 20px;
+               list-style: none;
+               font-size: 13px;
             }
-        }
     }
     
     .nav-drop-dropped{

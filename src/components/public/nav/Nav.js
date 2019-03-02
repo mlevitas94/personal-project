@@ -46,9 +46,7 @@ const Nav =(props) => {
                     </div>
                 </div>  
                 <div className='drop-two'>
-                    <ul>
                         {dropDown}
-                    </ul>
                 </div>  
             </div>
 
