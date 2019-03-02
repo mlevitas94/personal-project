@@ -16,6 +16,10 @@ const Nav =(props) => {
         document.querySelector('.dropdown').classList.toggle('dropped')
     }
 
+    const dropNav = () => {
+        document.querySelector('.drop-one').classList.toggle('nav-drop-dropped')
+    }
+
 
     // const dropDown
     return(
@@ -23,9 +27,31 @@ const Nav =(props) => {
             <h1>
                 Thom
             </h1>
-        <div className='burger'>
-            <i class="fas fa-bars"></i>
-        </div>
+            <div className='burger' onClick={() => dropNav()}>
+                <i class="fas fa-bars"></i>
+            </div>
+            <div className='nav-drop'>
+                <div className='drop-one'>
+                    <div className='drop-link' onClick={() => dropNav()}>
+                        <Link  to='/'>Home</Link>
+                    </div>
+                    <div className='drop-link' onClick={() => dropNav()}>
+                        Books
+                    </div>
+                    <div className='drop-link' onClick={() => dropNav()}>
+                        <Link to='/about'>About</Link>
+                    </div>
+                    <div className='drop-link' onClick={() => dropNav()}>
+                    <Link to='/contact'>Contact</Link>
+                    </div>
+                </div>  
+                <div className='drop-two'>
+                    <ul>
+                        {dropDown}
+                    </ul>
+                </div>  
+            </div>
+
             <ul className='nav-list'>
                 <li>
                     <div className='link-container' >

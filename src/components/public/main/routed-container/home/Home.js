@@ -5,7 +5,6 @@ import './Home.scss'
 
 
 const Home = (props) =>{
-    console.log(props)
     const bookList = props.books.map((book,i) =>{
         return(
             <div className='book' key={i}>
@@ -35,18 +34,26 @@ const Home = (props) =>{
             </div>
         )
     })
-    return(
-            <div className='whole-book-container' style={{fontFamily : 'Open Sans'}}>
-                <div className='header-container'>
-                    <div className='side-line'></div>
-                    <h1>Thom's Collection</h1>
-                    <div className='side-line'></div>
+    if(bookList[0]){
+        return(
+                <div className='whole-book-container' style={{fontFamily : 'Open Sans'}}>
+                    <div className='header-container'>
+                        <div className='side-line'></div>
+                        <h1>Thom's Collection</h1>
+                        <div className='side-line'></div>
+                    </div>    
+                    <div className='books-container'>
+                        {bookList}
+                    </div>
                 </div>    
-                <div className='books-container'>
-                    {bookList}
-                </div>
-            </div>    
-    )
+        )
+    }else{
+        return(
+            <div className='loading'>
+                Loading...
+            </div>
+        )
+    }
 }
 const mapToProps = reduxState =>{
     const {books} = reduxState

@@ -26,7 +26,7 @@ export default function About(){
                             <TwitterTimelineEmbed
                                 sourceType="profile"
                                 screenName="thomratz"
-                                options={{height: 400}}
+                                options={{height: 650}}
                                 />
                                 
                         </div>
