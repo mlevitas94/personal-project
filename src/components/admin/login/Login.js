@@ -45,15 +45,24 @@ class Login extends Component {
     login(){
         const username = this.state.username;
         const password = this.state.password;
-        axios.post('/admin/login', {username, password})
-        .then( res => {
-            this.props.updateUser(res.data)
-            this.props.history.push('/admin/config')
+        if(username==='' || password===''){
+            document.querySelector('.login-success').innerHTML=''
+            document.querySelector('.login-check').innerHTML='Please make sure of fields are filled'
+        }else{
+            document.querySelector('.login-check').innerHTML=''
+            document.querySelector('.login-success').innerHTML='Logging you in...'
+            axios.post('/admin/login', {username, password})
+            .then( res => {
+                this.props.updateUser(res.data)
+                this.props.history.push('/admin/config')
+    
+            })
+            .catch(err => {
+                document.querySelector('.login-success').innerHTML=''
+                document.querySelector('.login-check').innerHTML='Invalid Username or Password'
+            })
 
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        }
     }
     render(){
         return(
@@ -62,12 +71,31 @@ class Login extends Component {
             
             <div className='login'>
                 <p>Username</p>
-                <input type='text' value={this.state.username} onChange={(e) => this.handleInputChange('username', e.target.value)}/>
+
+                <input type='text' value={this.state.username} 
+                onKeyPress={(e) => {
+                    if(e.key === 'Enter'){
+                        this.login()
+                    }
+                }}
+                onChange={(e) => this.handleInputChange('username', e.target.value)}/>
+
                 <p>Password</p>
-                <input type='password' value={this.state.password} onChange={(e) => this.handleInputChange('password', e.target.value)}/>
+
+                <input type='password' value={this.state.password}
+                onKeyPress={(e) => {
+                    if(e.key === 'Enter'){
+                        this.login()
+                    }
+                }}
+                onChange={(e) => this.handleInputChange('password', e.target.value)}/>
+                
                 <br/>
                 <br/>
                 <button onClick={() => this.login()}>Login</button>
+                <br/>
+                <span className='login-success'></span>
+                <span className='login-check'></span>
             
             </div>
             </div>
