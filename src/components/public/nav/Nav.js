@@ -6,18 +6,17 @@ import {connect} from 'react-redux'
 const Nav =(props) => {
     const dropDown = props.books.map((book, i) => {
         return (
-            <Link className='books' key={i} to={`/books/${book.book_id}`}>
+            <Link  className='books' key={i} to={`/books/${book.book_id}`}>
                 <li>{book.title}</li>
             </Link>    
         )
     })
 
-    const drop = () => {
-        document.querySelector('.dropdown').classList.toggle('dropped')
+    const dropFunc = (sel, trans) => {
+        document.querySelector(`${sel}`).classList.toggle(`${trans}`)
     }
-
-    const dropNav = () => {
-        document.querySelector('.drop-one').classList.toggle('nav-drop-dropped')
+    const removeDrop = (sel, trans) => {
+        document.querySelector(`${sel}`).classList.remove(`${trans}`)
     }
 
 
@@ -27,21 +26,34 @@ const Nav =(props) => {
             <h1>
                 Thom
             </h1>
-            <div className='burger' onClick={() => dropNav()}>
+            <div className='burger' onClick={() => {
+                dropFunc('.drop-one', 'nav-drop-dropped')
+                removeDrop('.drop-two','drop-two-dropped')
+            }}>
                 <i class="fas fa-bars"></i>
             </div>
             <div className='nav-drop'>
                 <div className='drop-one'>
-                    <div className='drop-link' onClick={() => dropNav()}>
+                    <div className='drop-link' onClick={() => {
+                        dropFunc('.drop-one', 'nav-drop-dropped')
+                        removeDrop('.drop-two','drop-two-dropped')
+                    
+                    }}>
                         <Link  to='/'>Home</Link>
                     </div>
-                    <div className='drop-link' onClick={() => dropNav()}>
+                    <div className='drop-link' onClick={() => dropFunc('.drop-two', 'drop-two-dropped')}>
                         Books
                     </div>
-                    <div className='drop-link' onClick={() => dropNav()}>
+                    <div className='drop-link' onClick={() => {
+                        dropFunc('.drop-one', 'nav-drop-dropped')
+                        removeDrop('.drop-two','drop-two-dropped')
+                    }}>
                         <Link to='/about'>About</Link>
                     </div>
-                    <div className='drop-link' onClick={() => dropNav()}>
+                    <div className='drop-link' onClick={() => {
+                        dropFunc('.drop-one', 'nav-drop-dropped')
+                        removeDrop('.drop-two','drop-two-dropped')
+                    }}>
                     <Link to='/contact'>Contact</Link>
                     </div>
                 </div>  
@@ -57,7 +69,7 @@ const Nav =(props) => {
                         <div className='line' id='line-one'></div>
                     </div>    
                 </li>
-                <li onClick={() => drop()} className='dropdown-container'>
+                <li onClick={() => dropFunc('.dropdown', 'dropped')} className='dropdown-container'>
                     <div className='link-container' id='non-link'>
                     <span><i class="fas fa-book"></i> Books</span>
                         <div className='line' id='line-two'></div>

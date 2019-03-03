@@ -18,30 +18,45 @@
             width: 100%;
             font-size: 30px;
             overflow: hidden;
-               transition: max-height 0.3s;
+            transition: max-height 0.3s;
             a{
                 color: white;
                 text-decoration: none;
             }
             div{
-                margin: 20px 0px;
+                margin: 10px 0px;
                 cursor: pointer;
+                @media screen and (max-width: $breaksm){
+                    font-size:20px;
+                }
             }
         }
     }
     .drop-two{
         width: 100%;
         overflow: scroll;
+        max-height: 0px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        transition: max-height 0.3s;
             a{
                 color:white;
                 text-decoration: none;
                 margin: 0px 20px;
-               list-style: none;
-               font-size: 13px;
+                list-style: none;
+                font-size: 13px;
             }
+            &::-webkit-scrollbar{
+                height: 5px;
+            }
+            @media screen and (min-width: $breakmed){
+                display: none;
+            }
+    }
+    .drop-two-dropped{
+        max-height: 70px;
+        border-top: solid 1px white;
     }
     
     .nav-drop-dropped{
@@ -65,10 +80,12 @@
         display: inline-block;
         font-family: 'exo';
         margin: 0px 0px;
+        width: 100%;
         text-align: center;
         @media screen and (max-width: $breakmed){
             text-align: left;
             margin-left: 20px;
+            width: auto;
         }
     }
     @media screen and (max-width: $breakmed){

@@ -31,7 +31,7 @@ class Book extends Component {
                             <span class='kprice'>Kindle Price: {`$${selectedBook[0].kindle_price}.00`}</span>
                             <br/>
                             <br/>
-                            <a>Purchase This Book</a>
+                            <a target='_blank' href={`${selectedBook[0].link}`}>Purchase This Book</a>
                             <br/>
                             <br/>
                             <span>{selectedBook[0].info}</span>

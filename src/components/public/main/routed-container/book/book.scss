@@ -15,6 +15,9 @@
         border-bottom: solid 1px white;
         margin: 25px auto 50px auto;
         width: 60%;
+        @media screen and (max-width: $breaksm){
+            font-size:20px;
+        }
     }
     .split{
         display: flex;
@@ -31,9 +34,18 @@
                 @media screen and (max-width: $breaklarge){
                     width:100%;
                 }
+                @media screen and (max-width: $breakmed){
+                    width: 260px;
+                }
+                @media screen and (max-width: $breakxsm){
+                    width: 100%;
+                }
             }
             p{
                 text-align: center;
+            }
+            @media screen and (max-width: $breakmed){
+                width: 100%;
             }
         }
         .right{
@@ -48,14 +60,23 @@
                  &:hover{
                      cursor: pointer;
                  }
+                 @media screen and (max-width: $breaksm){
+                     font-size: 11px;
+                 }
              }
              .price{
                  border-bottom: solid 1px white;
                  font-size: 30px;
+                 @media screen and (max-width: $breaksm){
+                     font-size: 20px;
+                 }
              }
              .kprice{
                  border-bottom: solid 1px white;
                  font-size: 30px;
+                 @media screen and (max-width: $breaksm){
+                    font-size: 20px;
+                }
              }
              @media screen and (max-width: $breaklarge){
                  margin-top: 20px;
