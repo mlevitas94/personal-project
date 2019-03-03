@@ -231,7 +231,6 @@ class Bookhandles extends Component{
                         <br/>
                         <div className='edit-inputs'>
                             {toEdit}
-
                         </div>
 
                     </div>    
