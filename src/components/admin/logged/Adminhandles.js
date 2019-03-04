@@ -25,7 +25,6 @@ class Adminhandles extends Component{
         axios.get('/admin/getadmins')
         .then(res => {
             this.props.getAdmins(res.data)
-            console.log(this.props.admins)
         }).catch(err => {
             console.log(err)
         })
@@ -41,7 +40,7 @@ class Adminhandles extends Component{
         })
     }
     adminDelete(id, first, last, user){
-        let confirm = window.confirm(`Are you sure you want to remove website acces from ${first} ${last} (${user})?`)
+        let confirm = window.confirm(`Are you sure you want to remove website access from ${first} ${last} (${user})?`)
         if(confirm){
             axios.delete(`/admin/deleteadmin/${id}`)
             .then(res =>{
@@ -89,10 +88,11 @@ class Adminhandles extends Component{
     }
 
     editAdminPrivs(id,add,remove,edit){
+        document.querySelector(`#edit-privs-check-${id}`).innerHTML='Sending edit...'
         const privEdits = {add, remove, edit}
         axios.put(`/admin/editadmin/${id}`, privEdits)
         .then(res => {
-            console.log('admin edited')
+            document.querySelector(`#edit-privs-check-${id}`).innerHTML='Edit sent!'
         }).catch(err =>{
             console.log('err')
         })

@@ -4,6 +4,9 @@ import './book.scss'
 import {getBooks} from '../../../../../ducks/reducer'
 
 class Book extends Component {
+    componentDidMount() {
+        window.scrollTo(0, 0)
+      }
     render(){
         const selectedBook = this.props.books.filter(book => {
             return book.book_id == this.props.match.params.id

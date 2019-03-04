@@ -44,7 +44,6 @@ module.exports = {
             if(authedUser){
                 delete user.hash;
                 delete user.privs_id;
-                delete user.user_id;
                 session.user = user
                 res.status(200).send(session.user)
 
@@ -133,5 +132,10 @@ module.exports = {
             return admin
         })
         res.status(200).send(admins)
+    },
+
+    logout: async = (req,res) => {
+        req.session.destroy();
+        res.sendStatus(200)
     }
 }

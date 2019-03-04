@@ -123,9 +123,15 @@ class Bookhandles extends Component{
 
     render(){
         const bookScrolls = (sel, trans) => {
-            document.querySelector('.add-inputs').classList.remove('add-inputs-extend')
-            document.querySelector('.delete-list').classList.remove('delete-list-extend')
-            document.querySelector('.edit-inputs').classList.remove('edit-inputs-extend')
+            if(document.querySelector('.add-inputs')){
+                document.querySelector('.add-inputs').classList.remove('add-inputs-extend')
+            }
+            if(document.querySelector('.delete-list')){
+                document.querySelector('.delete-list').classList.remove('delete-list-extend')
+            }
+            if(document.querySelector('.edit-inputs')){
+                document.querySelector('.edit-inputs').classList.remove('edit-inputs-extend')
+            }
             document.querySelector('.handle-container').classList.add('handle-container-extend')
 
             document.querySelector(`${sel}`).classList.toggle(`${trans}`)
@@ -162,13 +168,13 @@ class Bookhandles extends Component{
             <div className='book-handles'>
             <h1>Book Handles</h1>
                 <div className='handle-container'>
+
+                {this.props.loggedUser.add === true?
                     <div className='add-auth'>
                         <button onClick={() => {
                             bookScrolls('.add-inputs', 'add-inputs-extend')
                         }}>Add a Book</button>
                         <br/>
-
-                        {/* hidden with overflow and height */}
                         <div className='add-inputs'> 
                             <span>Title:</span>
                             <br/>
@@ -211,19 +217,27 @@ class Bookhandles extends Component{
                             <button onClick={() => this.addBook()}>Add Book</button>
 
                         </div>
-
                     </div>
-                    <div className='delete-auth'>
-                        <button onClick={() =>{
-                            bookScrolls('.delete-list', 'delete-list-extend')
-                        }}>Delete a Book</button>
-                        <br/>
 
-                        {/* hidden with overflow and height */}
-                        <div className='delete-list'>
-                            {toBeDeleted}
+                : null
+                }
+
+                    {this.props.loggedUser.delete === true? 
+                        <div className='delete-auth'>
+                            <button onClick={() =>{
+                                bookScrolls('.delete-list', 'delete-list-extend')
+                            }}>Delete a Book</button>
+                            <br/>
+
+                            {/* hidden with overflow and height */}
+                            <div className='delete-list'>
+                                {toBeDeleted}
+                            </div>
                         </div>
-                    </div>    
+                        : null
+                    }
+
+                    {this.props.loggedUser.edit === true? 
                     <div className='edit-auth'> 
                         <button onClick={() => {
                             bookScrolls('.edit-inputs', 'edit-inputs-extend')
@@ -233,7 +247,9 @@ class Bookhandles extends Component{
                             {toEdit}
                         </div>
 
-                    </div>    
+                    </div> 
+                    : null   
+                    }
 
                 </div>
             </div>    
@@ -242,9 +258,10 @@ class Bookhandles extends Component{
 }
 
 const mapToProps = reduxState => {
-    const {books} = reduxState
+    const {books, loggedUser} = reduxState
     return {
-        books
+        books,
+        loggedUser
     }
 }
 export default connect(mapToProps, {getBooks})(Bookhandles)

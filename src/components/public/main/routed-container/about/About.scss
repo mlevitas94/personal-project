@@ -26,6 +26,9 @@
                      width: 260px;
                      margin: 0px auto;
                  }
+                 @media screen and (max-width: $breakxsm){
+                    width: 100%;
+                }
             }
             p{
                 border-top: solid 1px white;

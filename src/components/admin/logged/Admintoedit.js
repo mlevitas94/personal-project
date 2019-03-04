@@ -32,7 +32,10 @@ class Admintoedit extends Component{
                <span>Edit:</span>
                <input type='checkbox' checked={this.state.edit} onChange={() => this.updateAdminPrivs('edit')}/>
                <br/>
+               <span id={`edit-privs-check-${this.props.id}`}></span>
+               <br/>
                <button onClick={() => this.props.editfunc(this.props.id, add, remove, edit)}>Send Edit</button>
+               
             </div>
         )
     }

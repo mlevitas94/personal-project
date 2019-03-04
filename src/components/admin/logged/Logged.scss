@@ -56,6 +56,7 @@
             overflow: hidden;
             opacity: 0;
             transition: 1s;
+            margin: 5px 0px;
             #add-book-check{
                 font-size: 12px;
                 color: rgb(238, 76, 76);
@@ -76,7 +77,7 @@
                 }
             }
             @media screen and (max-width: $breakmed){
-                margin: 0px auto;
+                margin: 5px auto;
             }
         }
         .add-inputs-extend{
@@ -108,7 +109,7 @@
                }
            }
            @media screen and (max-width: $breakmed){
-               margin: 0px auto;
+               margin: 10px auto;
            }
         }
         .delete-list-extend{
@@ -121,14 +122,13 @@
         overflow:hidden;
         padding: 10px 0px;
         .edit-inputs{
+            margin: 10px 0px;
             width: 200px;
             opacity: 0;
             max-height: 0px;
             text-align: center;
             overflow-x: scroll;
             transition: 1s;
-            margin-top: 5px;
-
             img{
                 width: 100px;
             }
@@ -162,7 +162,7 @@
                 opacity: 1;
             }
             @media screen and (max-width: $breakmed){
-                margin: 0px auto;
+                margin: 10px auto;
             }
         }
         .edit-inputs-extend{
@@ -213,7 +213,7 @@
         }
         .add-checks{
             margin: 0px auto;
-            // width:30%;
+            width:25%;
             .check-container{
                 display: flex;
                 justify-content:center;
