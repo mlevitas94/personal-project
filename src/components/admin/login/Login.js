@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios';
 import {connect} from 'react-redux'
 import {updateUser} from '../../../ducks/reducer'
-
-
+import {Link} from 'react-router-dom'
 import './Login.scss'
 
 
@@ -67,37 +66,41 @@ class Login extends Component {
     render(){
         return(
             <div className='admin-container'>
-            <h1>Admin Login</h1>
-            
-            <div className='login'>
-                <p>Username</p>
-
-                <input type='text' value={this.state.username} 
-                onKeyPress={(e) => {
-                    if(e.key === 'Enter'){
-                        this.login()
-                    }
-                }}
-                onChange={(e) => this.handleInputChange('username', e.target.value)}/>
-
-                <p>Password</p>
-
-                <input type='password' value={this.state.password}
-                onKeyPress={(e) => {
-                    if(e.key === 'Enter'){
-                        this.login()
-                    }
-                }}
-                onChange={(e) => this.handleInputChange('password', e.target.value)}/>
+                <h1>Admin Login</h1>
                 
-                <br/>
-                <br/>
-                <button onClick={() => this.login()}>Login</button>
-                <br/>
-                <span className='login-success'></span>
-                <span className='login-check'></span>
-            
-            </div>
+                <div className='login'>
+                    <p>Username</p>
+
+                    <input type='text' value={this.state.username} 
+                    onKeyPress={(e) => {
+                        if(e.key === 'Enter'){
+                            this.login()
+                        }
+                    }}
+                    onChange={(e) => this.handleInputChange('username', e.target.value)}/>
+
+                    <p>Password</p>
+
+                    <input type='password' value={this.state.password}
+                    onKeyPress={(e) => {
+                        if(e.key === 'Enter'){
+                            this.login()
+                        }
+                    }}
+                    onChange={(e) => this.handleInputChange('password', e.target.value)}/>
+                    
+                    <br/>
+                    <br/>
+                    <button onClick={() => this.login()}>Login</button>
+                    <br/>
+                    <span className='login-success'></span>
+                    <span className='login-check'></span>
+                    <br/>
+                    <br/>
+                    <Link to='/'>Return to public page </Link>
+                    <br/>
+                    <br/>
+                </div>
             </div>
 
         )

@@ -19,6 +19,9 @@
         margin: 10px 0px;
 
     }
+    a{
+        @include button;
+    }
     .login-check{
         color: rgb(238, 76, 76);
     }
