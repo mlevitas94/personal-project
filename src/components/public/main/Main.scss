@@ -2,6 +2,7 @@
 .main-container{
     width: 85%;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
     height: 102%;
     @media screen and (max-width: $breakmed){
         width: 100%;

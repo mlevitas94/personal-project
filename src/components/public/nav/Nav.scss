@@ -35,6 +35,7 @@
     .drop-two{
         width: 100%;
         overflow: scroll;
+        -webkit-overflow-scrolling: touch;
         max-height: 0px;
         display: flex;
         justify-content: flex-start;
@@ -158,6 +159,7 @@
 .dropdown{
     max-height:0px;
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
     overflow-x: hidden;
     transition: max-height 0.5s;
     margin-left: 10px;
