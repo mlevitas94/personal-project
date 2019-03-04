@@ -16,19 +16,19 @@ export default function Contact(){
                 <br/>
                 <p><span>Email</span>: Thomratz1906@gmail.com</p>
                 <div className='social-medias'>
-                <a target='_blank' href='https://www.instagram.com/thomratz/'>
+                <a target='_blank' rel='noopener noreferrer' href='https://www.instagram.com/thomratz/'>
                     <div className='insta-cont'>
-                        <i class="fab fa-instagram"></i>
+                        <i className="fab fa-instagram"></i>
                     </div>
                 </a>
-                    <a target='_blank' href='https://www.facebook.com/thomratz/'>
+                    <a target='_blank' rel='noopener noreferrer' href='https://www.facebook.com/thomratz/'>
                         <div className='fb-cont'>
-                            <i class="fab fa-facebook-f"></i>
+                            <i className="fab fa-facebook-f"></i>
                         </div>
                     </a>
-                    <a target='_blank' href='https://twitter.com/thomratz'>
+                    <a target='_blank' rel='noopener noreferrer' href='https://twitter.com/thomratz'>
                         <div className='tw-cont'>
-                            <i class="fab fa-twitter"></i>
+                            <i className="fab fa-twitter"></i>
                         </div>
                     </a>
                 </div>

@@ -24,7 +24,6 @@ class Toedit extends Component{
     async editBook(id){
 
         const getSignedRequest = async (file) => {
-            console.log(file)
             const fileName = `${randomString()}-${file.name.replace(/\s/g, '-')}`;
     
             axios.get('api/signs3' , {
@@ -53,7 +52,7 @@ class Toedit extends Component{
             axios
               .put(signedRequest, file, options)
               .then(res => {
-                const  {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state
+                const  {title, purchaselink, price, info, kprice, favsnip} = this.state
                 let toEdit = {title, purchaselink, imageurl:url, price, info, kprice, favsnip}
                 axios.put(`/api/books/${id}`, toEdit)
                 .then(res => {
@@ -140,7 +139,7 @@ class Toedit extends Component{
 
                     <span>Current Image:</span>
                     <br/>
-                    <img src={`${this.props.image}`}/>
+                    <img src={`${this.props.image}`} alt='to be edited'/>
                     <br/>
                     <input id={`input-${this.props.id}`} type='file' accept='image/*'/>
                     <br/>

@@ -12,7 +12,7 @@ const Home = (props) =>{
                 <div className='halfed'>
                     <div className='left'>
                         <br/>
-                        <img src={`${book.image}`}/>
+                        <img src={`${book.image}`} alt='Book images'/>
                         <br/>
                     </div>
                     <div className='right'>
@@ -24,7 +24,7 @@ const Home = (props) =>{
                         <br/>
                         <br/>
                         <br/>
-                        <a target='_blank' href={book.link}> Purchase Book</a>
+                        <a target='_blank' rel="noopener noreferrer" href={book.link}> Purchase Book</a>
                     </div>
                 </div>
                 <br/>

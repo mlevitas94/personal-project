@@ -9,7 +9,6 @@ module.exports = {
         try{
             const db = req.app.get('db')
             const {title, purchaselink, imageurl, price, info, kprice, favsnip} = req.body
-            console.log(req.body)
 
             if(!title || !purchaselink || !imageurl || !price || !info || !kprice || !favsnip ){
                return res.status(401).send('make sure all fields are filled')

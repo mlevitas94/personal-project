@@ -16,7 +16,7 @@ async componentDidMount(){
       this.props.getBooks(res.data)
     })
     .catch(err => {
-      console.log('didnt get books fam', err)
+      console.log(err)
     })
 }
   render() {

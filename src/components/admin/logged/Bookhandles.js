@@ -61,7 +61,6 @@ class Bookhandles extends Component{
             axios
               .put(signedRequest, file, options)
               .then(res => {
-                  console.log(url)
                   this.setState({
                     add: {
                         ...this.state.add,
@@ -70,7 +69,6 @@ class Bookhandles extends Component{
                 })
             const {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state.add
             const toAdd = {title, purchaselink, imageurl, price, info, kprice, favsnip}
-            console.log(toAdd)
                 axios.post('/api/books', toAdd)
                 .then(res => {
                     this.setState({
@@ -95,7 +93,7 @@ class Bookhandles extends Component{
               });
           };
           const imageInput = document.getElementById('imageInput').files[0]
-          const {title, purchaselink, imageurl, price, info, kprice, favsnip} = this.state.add
+          const {title, purchaselink, price, info, kprice, favsnip} = this.state.add
           if(!title || !purchaselink || !imageInput || !price || !info || !kprice || !favsnip){
             document.getElementById('add-book-check').innerHTML = 'Please make sure all fields are filled'
             document.getElementById('add-book-success').innerHTML = ''

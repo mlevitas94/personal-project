@@ -14,14 +14,14 @@ export default function About(){
             <div className='about-container'>
                 <div className='about-split'>
                     <div className='left'>
-                        <img src={aboutpic}/>
+                        <img src={aboutpic} alt='Author pic'/>
                         <br/>
                         <p>
                         BELIEVE IN THOM. He dives in combating masculine toxicity in today’s culture. He’s in a forever journey to find the line between every subject between free speech and mental illness. Follow him into the rabbit hole of love, loss and eternal confusion. STAY SAFE.
                         </p>
                     </div>
                     <div className='right'>
-                        <i class="fab fa-twitter"></i>
+                        <i className="fab fa-twitter"></i>
                         <div className='twitter-cont'>
                             <TwitterTimelineEmbed
                                 sourceType="profile"

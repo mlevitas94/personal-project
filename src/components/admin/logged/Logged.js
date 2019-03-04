@@ -15,7 +15,6 @@ class Logged extends Component{
     }
 
     componentDidMount(){
-        console.log(this.props.loggedUser);
         if(!this.props.loggedUser.user_id){
             this.props.history.push('/admin')
         }else{
@@ -37,7 +36,6 @@ class Logged extends Component{
     }
 
     render(){
-        console.log(this.props)
         return(
             <div className='whole-admin-container'>
             <h1>Welcome back {`${this.props.loggedUser.first_name}`}! </h1>

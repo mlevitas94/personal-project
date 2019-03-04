@@ -18,7 +18,6 @@ module.exports = {
 
             res.status(201).send('account created')
         }catch(error){
-            console.log(error)
             res.status(401).send('error')
         }
         
@@ -109,7 +108,6 @@ module.exports = {
         const {add,remove,edit} = req.body
         const {id} = req.params
         const db = req.app.get('db')
-        console.log(add,remove,edit)
         
 
         let admin = await db.admin.get_a_admin(id)

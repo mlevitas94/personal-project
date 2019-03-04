@@ -1,16 +1,18 @@
-import React from 'react'
+import React, {Component} from 'react'
 import './Main.scss'
 import routes from './routes'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 
-const Main = (props) =>{
-    return (
-        <div className='main-container'>
-        
-             {routes}
-        </div>
-    )
+class Main extends Component{
+    render(){
+        return (
+            <div className='main-container' id='scrolltop'>
+                {routes}
+            </div>
+            
+        )
+    }
 }
 
 const mapToProps = reduxState => {

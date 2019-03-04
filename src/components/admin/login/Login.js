@@ -20,17 +20,14 @@ class Login extends Component {
 
         if(admin_id){
             this.props.history.push('/admin/config')
-            console.log('sesssion got from ducks')
         }else{
             axios.get('/admin/getuser')
             .then(res => {
                 this.props.updateUser(res.data)
-                console.log('session got from back')
-                console.log(this.props.loggedUser)
                 this.props.history.push('/admin/config')
             })
             .catch(err => {
-                console.log('no session existing')
+        
             })
         }
     }

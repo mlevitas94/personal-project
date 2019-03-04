@@ -30,7 +30,7 @@ const Nav =(props) => {
                 dropFunc('.drop-one', 'nav-drop-dropped')
                 removeDrop('.drop-two','drop-two-dropped')
             }}>
-                <i class="fas fa-bars"></i>
+                <i className="fas fa-bars"></i>
             </div>
             <div className='nav-drop'>
                 <div className='drop-one'>
@@ -65,13 +65,13 @@ const Nav =(props) => {
             <ul className='nav-list'>
                 <li>
                     <div className='link-container' >
-                        <span className='home'><Link  to='/'><i class="fas fa-home"></i>Home</Link></span>
+                        <span className='home'><Link  to='/'><i className="fas fa-home"></i>Home</Link></span>
                         <div className='line' id='line-one'></div>
                     </div>    
                 </li>
                 <li onClick={() => dropFunc('.dropdown', 'dropped')} className='dropdown-container'>
                     <div className='link-container' id='non-link'>
-                    <span><i class="fas fa-book"></i> Books</span>
+                    <span><i className="fas fa-book"></i> Books</span>
                         <div className='line' id='line-two'></div>
                     </div>    
                         <div className='dropdown' id='dropdown'>
@@ -82,13 +82,13 @@ const Nav =(props) => {
                 </li>
                 <li>
                     <div className='link-container' >
-                        <Link to='/about'><i class="fas fa-user"></i> About</Link>
+                        <Link to='/about'><i className="fas fa-user"></i> About</Link>
                         <div className='line' id='line-three'></div>
                     </div>    
                 </li>
                 <li>
                     <div className='link-container' id='line-three'>
-                        <Link to='/contact'><i class="fas fa-address-book"></i> Contact</Link>
+                        <Link to='/contact'><i className="fas fa-address-book"></i> Contact</Link>
                         <div className='line' id='line-four'></div>
                     </div>    
                 </li>
