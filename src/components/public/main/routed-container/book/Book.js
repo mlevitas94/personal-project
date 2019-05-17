@@ -44,9 +44,7 @@ class Book extends Component {
         )
     }else{
         return(
-            <h1>
-                Loading...
-            </h1>
+            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         )
     }
     }    

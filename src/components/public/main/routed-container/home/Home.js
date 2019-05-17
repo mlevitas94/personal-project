@@ -49,9 +49,7 @@ const Home = (props) =>{
         )
     }else{
         return(
-            <div className='loading'>
-                Loading...
-            </div>
+            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         )
     }
 }
